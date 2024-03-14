@@ -1,0 +1,354 @@
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+@media (max-width:950){
+.section-header {
+  text-align: start;
+  padding-bottom: 40px;
+  padding-left: 10px;
+}
+}
+@media (max-width:600){
+  .section-header {
+  text-align: center;
+  padding-bottom: 40px;
+  padding-left: 10px;
+}
+}
+  
+
+.section-header h2 {
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin: 0;
+  color: #5ae8b2;
+  text-transform: uppercase;
+}
+
+.section-header p {
+  margin: 10px 0 0 0;
+  padding: 0;
+  font-size: 38px;
+  line-height: 42px;
+  font-weight: 700;
+  color: #006740;
+}
+
+@media (max-width: 768px) {
+  .section-header p {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+.counsellors {
+  background: #fff;
+  padding: 60px 0;
+}
+@media (min-width: 1024px) {
+  .counsellors {
+    padding: 60px 60px;
+  }
+}
+
+.counsellors .member {
+  overflow: hidden;
+  text-align: center;
+  border-radius: 5px;
+  background: #fff;
+  transition: 0.3s;
+}
+
+.counsellors .member .member-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.counsellors .member .member-img:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  /* background: url(../img/team-shape.svg) no-repeat center bottom; */
+  background-size: contain;
+  z-index: 1;
+}
+
+.counsellors .member .social {
+  position: absolute;
+  right: -100%;
+  top: 30px;
+  opacity: 0;
+  border-radius: 4px;
+  transition: 0.5s;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 2;
+}
+
+.counsellors .member .social a {
+  transition: color 0.3s;
+  color: rgba(1, 41, 112, 0.5);
+  margin: 15px 12px;
+  display: block;
+  line-height: 0;
+  text-align: center;
+}
+
+.counsellors .member .social a:hover {
+  color: rgba(1, 41, 112, 0.8);
+}
+
+.counsellors .member .social i {
+  font-size: 18px;
+}
+
+.counsellors .member .member-info {
+  padding: 10px 15px 20px 15px;
+}
+
+.counsellors .member .member-info h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #006740;
+}
+
+.counsellors .member .member-info span {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  color: #aaaaaa;
+}
+
+.counsellors .member .member-info p {
+  font-style: italic;
+  font-size: 14px;
+  padding-top: 15px;
+  line-height: 26px;
+  color: #5e5e5e;
+}
+@media only screen and (min-width: 1024px) {
+  .container header .header-nav-area #nav_container  {
+    display:flex;
+  }
+}
+.counsellors .row .col{
+  position: relative;
+}
+/* .counsellors .Card {
+  overflow: hidden;
+  position: relative;
+  align-items: center; 
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12); */
+  /* padding: 14px 80px 18px 36px; */
+  /* cursor: pointer;
+  right: 20px;
+} */
+
+/* .counsellors .Card:hover { */
+  /* transform: translateY(-5px); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  /* transform: scale(1.01);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+} */
+
+/* @media (max-width: 600px) {
+   .container {
+      padding-left: 10%;
+}
+}
+ @media (max-width: 950px) {
+   .container {
+      padding-left: 10%;
+}
+} */
+ @media screen and (min-width:1280px) {
+    .card-res {
+      width: 25%; /* 33.333% width with 10px margin on each side */
+    }
+  }
+
+  @media screen and (max-width:767px) {
+    .card-res {
+      width: 90%; /* 33.333% width with 10px margin on each side */
+    }
+  }
+  @media screen and (max-width:1024px) {
+    .card-res {
+      width: 45%; /* 33.333% width with 10px margin on each side */
+    }
+  }
+  @media screen and (max-width:1280px) {
+    .card-res {
+      width: 45%; /* 33.333% width with 10px margin on each side */
+    }
+  }
+  @media screen and (max-width:480px) {
+    .card-res {
+      width: 90%; /* 33.333% width with 10px margin on each side */
+    }
+  }
+
+.counsellors .credentialing {
+  --bg-color: #B8F9D3;
+  --bg-color-light: #e2fced;
+  --text-color-hover: #ffffff;
+  --box-shadow-color: rgba(184, 249, 211, 0.48);
+}
+
+.Card {
+  /* width: 220px;
+  height: 321px; */
+  background: #effff6;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 14px 26px rgba(0,0,0,0.04);
+  transition: all 0.5s ease-out;
+  text-decoration: none;
+   right: -26px;
+  bottom: -15px; 
+}
+
+.Card:hover {
+  transform: translateY(-5px) scale(1.005) translateZ(0);
+  box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+    0 24px 46px var(--box-shadow-color);
+}
+
+.Card:hover .overlay {
+  transform: scale(5.5) translateZ(0);
+}
+
+.Card:hover .circle {
+  border-color: var(--bg-color-light);
+  background: var(--bg-color);
+}
+
+/* .card:hover .circle:after {
+  background: var(--bg-color-light);
+} */
+
+.Card:hover p {
+  color: var(--text-color-hover);
+}
+
+.Card:active {
+  transform: scale(1) translateZ(0);
+  box-shadow: 0 15px 24px rgba(0,0,0,0.11),
+    0 15px 24px var(--box-shadow-color);
+}
+
+.Card p {
+  font-size: 17px;
+  color: #06612d;
+  margin-top: 30px;
+  z-index: 1000;
+  transition: color 0.3s ease-out;
+}
+
+.circle {
+  width: 135px;
+  height: 135px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease-out;
+  top:10px;
+}
+
+.circle:after {
+  content: "";
+  width: 118px;
+  height: 118px;
+  display: block;
+  position: absolute;
+  background: var(--bg-color);
+  background-image: url('../../../assets/emp.png');
+  background-size: cover; 
+  background-position: center; 
+  border-radius: 50%;
+  top: 7px;
+  left: 7px;
+  transition: opacity 0.5s ease-out;
+}
+
+.circle svg {
+  z-index: 10000;
+  transform: translateZ(0);
+}
+
+.overlay {
+  width: 118px;
+  position: absolute; 
+  height: 118px;
+  border-radius: 50%;
+  background: var(--bg-color);
+  top: 50px;
+  left: 41px;
+  z-index: 0;
+  transition: transform 0.5s ease-out;
+}
+
+.card{
+  box-shadow: 10px 10px  10px rgba(52, 52, 52, 0.1) ;
+  transition: all 0.5s ease-out;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-5px) scale(1.005) translateZ(0);
+  box-shadow: 0 24px 36px rgba(0,0,0,0.11),
+    0 24px 46px var(--box-shadow-color);
+}
+
+/* .counsellors .member {
+  overflow: hidden;
+  text-align: center;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  transition: 0.3s;
+}
+
+.counsellors .member .member-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.counsellors .member .member-img:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  /* background: url(../img/team-shape.svg) no-repeat center bottom; */
+  /* background-size: contain;
+  z-index: 1; */
+/* } */ 
+.counsellors p{
+  line-height: .7;
+}
+.counsellors .img-fit{
+  object-fit: cover;
+
+}
+.popover-header{
+  background-color: rgb(214, 255, 214);
+}
