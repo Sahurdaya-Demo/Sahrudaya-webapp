@@ -1,2 +1,2 @@
 
-export const LinkApi='https://sayooj3901.pythonanywhere.com/';
+export const LinkApi='https://sayooj123.pythonanywhere.com/';

@@ -1,0 +1,8 @@
+.dataTables_wrapper .sorting:after,
+.dataTables_wrapper .sorting_asc:after,
+.dataTables_wrapper .sorting_desc:after {
+  font-family: 'Font Awesome'; /* Example font family */
+  content: '\02C6'; /* Example content for sorting arrows (adjust as needed) */
+  font-size: 10px; /* Adjust the font size */
+  color: #333; /* Adjust the color of the sorting arrows */
+}

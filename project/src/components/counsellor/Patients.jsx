@@ -10,12 +10,13 @@ import axios from "axios";
 import { Row,Col} from "react-bootstrap";
 import { LinkApi } from "../Utils/Resource";
 import { Link } from "react-router-dom";
+import DataTableComponent from "./table";
 function Patients()
 {
     const[profile,setprofile]=useState([])
-    
+    LoadExternalScript(['https://code.jquery.com/jquery-3.7.0.js','https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js','https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js','https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js','https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js','https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js']);
     useEffect(()=>{
-    LoadExternalScript(['https://code.jquery.com/jquery-3.7.0.js','https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js','https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js','https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js','https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js','https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js','../../../counseljs/tablescript.js']);
+    // LoadExternalScript(['https://code.jquery.com/jquery-3.7.0.js','https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js','https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js','https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js','https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js','https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js']);
     //  setInterval(()=>{
     // view(setprofile)
     //     },5000)
@@ -176,7 +177,7 @@ function Patients()
                                 DataTable Example
                             </div>
                             <div className="card-body">
-                            <table id="counsel" className="table table-striped" style={{width:'100%'}}>
+                            {/* <table id="counsel" className="table table-striped" style={{width:'100%'}}>
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -272,8 +273,8 @@ function Patients()
                                     </tr>
                                     
                                 </tfoot>
-                           </table>
-                        
+                           </table> */}
+                                <DataTableComponent data={profile[1]}/>
                            </div>
                         </div>
                     

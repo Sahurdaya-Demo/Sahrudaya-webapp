@@ -16,6 +16,7 @@ const view=async(setprofile)=>{
         sessionStorage.setItem('name',response.data[0][0].name)
         sessionStorage.setItem('email',response.data[0][0].email)
         setprofile(response.data)
+        
     })
   }
   catch{}
