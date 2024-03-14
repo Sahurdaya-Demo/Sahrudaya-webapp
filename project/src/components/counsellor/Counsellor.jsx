@@ -273,7 +273,7 @@ const handlesaveClick = () => {
             
             <Image className="rounded-circle mx-auto d-block"
                
-                src={`http://127.0.0.1:8000${profilejson.image}`}
+                src={`${LinkApi}${profilejson.image}`}
                 style={{width: 125, height: 125, borderRadius: 125/ 2 }}
                 // onChange={(e) => {setemailchange(e.target.value);}}
               />
