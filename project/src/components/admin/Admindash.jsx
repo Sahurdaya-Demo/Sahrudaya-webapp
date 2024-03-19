@@ -2,20 +2,19 @@ import LoadExternalScript from '../../LoadExternalScript';
 import { useEffect, useState,useRef} from 'react';
 import { Chart as ChartJS, defaults } from "chart.js/auto";
 import { Bar, Line } from "react-chartjs-2";
-import Modal from 'react-bootstrap/Modal'
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import axios from 'axios';
-import Toast from 'react-bootstrap/Toast';
-import { Row,Col} from "react-bootstrap";
+// import Modal from 'react-bootstrap/Modal'
+// import Form from 'react-bootstrap/Form';
+// import Button from 'react-bootstrap/Button';
+// import axios from 'axios';
+// import Toast from 'react-bootstrap/Toast';
+// import { Row,Col} from "react-bootstrap";
 import CountUp from 'react-countup';
 import { LinkApi } from '../Utils/Resource';
 import Tbadmin from './table';
 function Admindash()
 {
-    const windowWidth = useRef(window.innerWidth);
-    const windowHeight = useRef(window.innerHeight);
-    //  let Thevaracollege,Thevarahss,Thevaraup,Thevaraschool,Karukutty,Kanjoor,Eloor,Kottarapalli,Manappuram,Pothy,Kakkand;
+    // const windowWidth = useRef(window.innerWidth);
+    // const windowHeight = useRef(window.innerHeight);
     const[Vypin,setVypin]=useState(0);
     const[Thevaracollege,setThevaracollege]=useState('');
     const[Thevarahss,setThevarahss]=useState('');
@@ -31,35 +30,35 @@ function Admindash()
     const [show, setShow] = useState(false);
     const [showA, setShowA] = useState(false);
     const[toastdata,settoastdata]=useState(false)
-    const handleShow = () => setShow(true);
-    const handleClose = () => {setShow(false);toggleCloseA();settoastdata(false)};
-    const toggleShowA = () => {setShowA(true)};
-    const toggleCloseA = () => {setShowA(false)};
-    const[id,setid]=useState("")
-    const[caemail,setcaemail]=useState("")
-    const[date,setdate]=useState("")
-    const[place,setplace]=useState("")
-    const[name,setname]=useState("")
-    const[Age, setage] = useState(0);
-    const[Gender, setgender] = useState("")
-    const[f_status,setfinstatus]=useState("")
-    const[m_status,setmaritalstat]=useState("")
-    const[School,setschool]=useState("")
-    const[religion,setreligion]=useState("")
-    const[f_education,setfeducation]=useState("")
-    const[f_occupation,setfoccupation]=useState("")
-    const[m_education,setmeducation]=useState("")
-    const[m_occupation,setmoccupation]=useState("")
-    const[problem,setproblem]=useState("")
-    const[history,sethistory]=useState("")
-    const[Intervention,setintervention]=useState("")
-    const[challenge,setchallenge]=useState("")
-    const[follow_ups,setsession]=useState("")
-    const[referral,setreferral]=useState("")
-    const[outcome,setoutcome]=useState("")
-    const[remarks,setremarks]=useState("")
-    const[status,setstatus]=useState("")
-    const[nameofcon,setnameofcon]=useState("")
+    // const handleShow = () => setShow(true);
+    // const handleClose = () => {setShow(false);toggleCloseA();settoastdata(false)};
+    // const toggleShowA = () => {setShowA(true)};
+    // const toggleCloseA = () => {setShowA(false)};
+    // const[id,setid]=useState("")
+    // const[caemail,setcaemail]=useState("")
+    // const[date,setdate]=useState("")
+    // const[place,setplace]=useState("")
+    // const[name,setname]=useState("")
+    // const[Age, setage] = useState(0);
+    // const[Gender, setgender] = useState("")
+    // const[f_status,setfinstatus]=useState("")
+    // const[m_status,setmaritalstat]=useState("")
+    // const[School,setschool]=useState("")
+    // const[religion,setreligion]=useState("")
+    // const[f_education,setfeducation]=useState("")
+    // const[f_occupation,setfoccupation]=useState("")
+    // const[m_education,setmeducation]=useState("")
+    // const[m_occupation,setmoccupation]=useState("")
+    // const[problem,setproblem]=useState("")
+    // const[history,sethistory]=useState("")
+    // const[Intervention,setintervention]=useState("")
+    // const[challenge,setchallenge]=useState("")
+    // const[follow_ups,setsession]=useState("")
+    // const[referral,setreferral]=useState("")
+    // const[outcome,setoutcome]=useState("")
+    // const[remarks,setremarks]=useState("")
+    // const[status,setstatus]=useState("")
+    // const[nameofcon,setnameofcon]=useState("")
     const[data,setData]=useState([])
     const [pending,setpending]=useState([]);
     const [completed,setcompleted]=useState([]);
@@ -67,7 +66,7 @@ function Admindash()
     const [males, setMales] = useState([]);
     const [females, setFemales] = useState([]);
     const [others, setOthers] = useState([]);
-    const [dtoast,setdtoast]=useState([]);
+    // const [dtoast,setdtoast]=useState([]);
     const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
     const [selectYear, setSelectYear] = useState(new Date().getFullYear());
     useEffect(() => {
@@ -87,10 +86,10 @@ function Admindash()
             retrieveData();
             }, [selectYear]);
             
-        const handlescroll=()=>{
-            document.getElementById('modal')?.scrollIntoView({behavior:'smooth'})
-            toggleShowA()
-        }
+        // const handlescroll=()=>{
+        //     document.getElementById('modal')?.scrollIntoView({behavior:'smooth'})
+        //     toggleShowA()
+        // }
     
         const retrieveData = async () => {
             const response = await fetch(`${LinkApi}formsubmit/`);
@@ -167,66 +166,66 @@ function Admindash()
     //     }
     // }
     
-    const searchemail=async(email)=>{
-        await axios({
-            method: 'post',
-            // url: 'http://127.0.0.1:8000/emailsearch/',
-            url: `${LinkApi}emailsearch/`,
-            data: {'email':email}
-        }).then(response=>{
-            if(response.data.errors)
-            {
-                toggleShowA()
-                // console.log('not found')
-            }
-        })
-    }
-      const getformdetails=async(id)=>{
+    // const searchemail=async(email)=>{
+    //     await axios({
+    //         method: 'post',
+    //         // url: 'http://127.0.0.1:8000/emailsearch/',
+    //         url: `${LinkApi}emailsearch/`,
+    //         data: {'email':email}
+    //     }).then(response=>{
+    //         if(response.data.errors)
+    //         {
+    //             toggleShowA()
+    //             // console.log('not found')
+    //         }
+    //     })
+    // }
+    //   const getformdetails=async(id)=>{
         
-        // const result=await axios.get(`http://127.0.0.1:8000/formsubmit/${id}`)
-        const result=await axios.get(`${LinkApi}formsubmit/${id}`)
-        // console.log(result.data)
-        setdate(result.data.date)
-        setid(result.data.id)
-        setname(result.data.name)
-        setage(result.data.age)
-        setgender(result.data.gender)
-        setfinstatus(result.data.finacial_status)
-        setmaritalstat(result.data.marital_status)
-        setschool(result.data.school)
-        setreligion(result.data.religion)
-        setfeducation(result.data.fathers_education)
-        setfoccupation(result.data.fathers_occupation)
-        setmeducation(result.data.mothers_education)
-        setmoccupation(result.data.mothers_occupation)
-        sethistory(result.data.history_of_problem)
-        setproblem(result.data.problem)
-        setintervention(result.data.intervention)
-        setchallenge(result.data.challenges_by_counsellor)
-        setsession(result.data.number_of_followup_sections)
-        setreferral(result.data.referral_service)
-        setoutcome(result.data.outcome)
-        setremarks(result.data.remarks)
-        setstatus(result.data.status);
-        setplace(result.data.place_of_counselling)
-        setnameofcon(result.data.nameofcounsellor)
-    }
-    const delrecord=async(id)=>{
-    if (window.confirm('Are you sure you wish to delete this item?')){
-    try{
-    await axios({
-        method: 'delete',
-        // url:`http://127.0.0.1:8000/formsubmit/${id}/`,
-        url:`${LinkApi}formsubmit/${id}/`,
-      }).then(response=>{
-        console.log(response.data);
-        alert('Record Deleted Successfully!!')
-      }
-      )}
-      catch{}
-    }
+    //     // const result=await axios.get(`http://127.0.0.1:8000/formsubmit/${id}`)
+    //     const result=await axios.get(`${LinkApi}formsubmit/${id}`)
+    //     // console.log(result.data)
+    //     setdate(result.data.date)
+    //     setid(result.data.id)
+    //     setname(result.data.name)
+    //     setage(result.data.age)
+    //     setgender(result.data.gender)
+    //     setfinstatus(result.data.finacial_status)
+    //     setmaritalstat(result.data.marital_status)
+    //     setschool(result.data.school)
+    //     setreligion(result.data.religion)
+    //     setfeducation(result.data.fathers_education)
+    //     setfoccupation(result.data.fathers_occupation)
+    //     setmeducation(result.data.mothers_education)
+    //     setmoccupation(result.data.mothers_occupation)
+    //     sethistory(result.data.history_of_problem)
+    //     setproblem(result.data.problem)
+    //     setintervention(result.data.intervention)
+    //     setchallenge(result.data.challenges_by_counsellor)
+    //     setsession(result.data.number_of_followup_sections)
+    //     setreferral(result.data.referral_service)
+    //     setoutcome(result.data.outcome)
+    //     setremarks(result.data.remarks)
+    //     setstatus(result.data.status);
+    //     setplace(result.data.place_of_counselling)
+    //     setnameofcon(result.data.nameofcounsellor)
+    // }
+//     const delrecord=async(id)=>{
+//     if (window.confirm('Are you sure you wish to delete this item?')){
+//     try{
+//     await axios({
+//         method: 'delete',
+//         // url:`http://127.0.0.1:8000/formsubmit/${id}/`,
+//         url:`${LinkApi}formsubmit/${id}/`,
+//       }).then(response=>{
+//         console.log(response.data);
+//         alert('Record Deleted Successfully!!')
+//       }
+//       )}
+//       catch{}
+//     }
 
-  }
+//   }
   defaults.maintainAspectRatio=false;
   defaults.responsive=true;
 
@@ -253,33 +252,33 @@ function Admindash()
     },
   ]
 };
-const updatecaemail=async(id)=>{
-    console.log(caemail)
-    await axios({
-        method: 'post',
-        // url:`http://127.0.0.1:8000/emailchange/`,
-        url:`${LinkApi}emailchange/`,
-        data:{'email':caemail,'id':id},
-      }).then(response=>{
-        // console.log(response.data);
-        // setValidated(true)
-        // handleClose()
-      }
-      )
-}
-const fetchemail=async()=>{
-    // const response= await fetch(`http://127.0.0.1:8000/api/`)
-    const response= await fetch(`${LinkApi}api/`)
-    const jsonData = await response.json();
-    for(let i=0;i<Object.keys(jsonData).length;i++){
-        try{
-        if(jsonData[i].type==='admin')
-        delete jsonData[i]
-        }
-        catch{}
-    }
-    setdtoast(jsonData)
-}
+// const updatecaemail=async(id)=>{
+//     console.log(caemail)
+//     await axios({
+//         method: 'post',
+//         // url:`http://127.0.0.1:8000/emailchange/`,
+//         url:`${LinkApi}emailchange/`,
+//         data:{'email':caemail,'id':id},
+//       }).then(response=>{
+//         // console.log(response.data);
+//         // setValidated(true)
+//         // handleClose()
+//       }
+//       )
+// }
+// const fetchemail=async()=>{
+//     // const response= await fetch(`http://127.0.0.1:8000/api/`)
+//     const response= await fetch(`${LinkApi}api/`)
+//     const jsonData = await response.json();
+//     for(let i=0;i<Object.keys(jsonData).length;i++){
+//         try{
+//         if(jsonData[i].type==='admin')
+//         delete jsonData[i]
+//         }
+//         catch{}
+//     }
+//     setdtoast(jsonData)
+// }
 
     return(
         <>
@@ -588,13 +587,7 @@ const fetchemail=async()=>{
                                 <tbody>
                                 {data?.map(record => 
                                         <tr key={record.id}>
-                                        <td>{record.name}</td>
-                                        <td>{record.nameofcounsellor}</td>
-                                        <td>{record.gender}</td>
-                                        <td>{record.date}</td>
-                                        <td>{record.place_of_counselling}</td>
-                                        <td>{record.problem}</td>
-                                        <td>{record.status}</td>
+                                        
                                         <td>{record.age}</td>
                                         <td>{record.finacial_status}</td>
                                         <td>{record.marital_status}</td>
@@ -657,325 +650,7 @@ const fetchemail=async()=>{
                            </div>
                            {/* {console.log(screen.height)} */}
                         </div>
-                        <Modal size='xl' id='modal' show={show} onHide={handleClose} centered>
-                        <Toast show={showA} onClose={toggleCloseA} className=' position-absolute  translate-middle-y' style={{zIndex:10000,top:`${windowHeight.current*(4.0/100)}%`,right:`${windowWidth.current*(2.0/100)}%`}}>
-                        <Toast.Header>
-                            <img
-                            src="holder.js/20x20?text=%20"
-                            className="rounded me-2"
-                            alt=""
-                            />
-                            <strong className="me-auto">Notification</strong>
-                            {/* <small>11 mins ago</small> */}
-                        </Toast.Header>
                         
-                        <Toast.Body>{toastdata?'Change Access':<span>It Seems Like Counselor <strong>{nameofcon}</strong> Has Been Deleted. Would You Like To Change Access</span>}
-                        <Form.Control as="select" onChange={(e)=>setcaemail(e.target.value)} required onClick={()=>fetchemail()}>
-                            <option></option>
-                            {
-                                dtoast?.map(record=>
-                                    <option key={record.id}>{record.email}</option>
-                                    )
-                            }
-                            
-                        </Form.Control>
-                        <Button variant='success' className='mt-2' onClick={()=>updatecaemail(id)}>Submit</Button>
-                        </Toast.Body>
-                        </Toast> 
-                        <Modal.Header closeButton onClick={handleClose} style={{backgroundColor:"#75E3B9",opacity:".7",border:'none'}}>
-                            <Modal.Title>Edit Data</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body className='p-2'style={{backgroundColor:"#75E3B9",opacity:".7"}}>
-                        <Form className="mb-3" >
-                        <Row>
-                                    <Col md={6}>
-                                        <Form.Group>
-                                            <Form.Label>Date</Form.Label>
-                                            <Form.Control
-                                                type="date"
-                                                placeholder=""
-                                                value={date||''}
-                                                
-                                               disabled
-                                                autoFocus
-                                            />
-                                        </Form.Group>
-                                    </Col>
-                                    <Col md={6}>
-                                        <Form.Group>
-                                            <Form.Label>Place of Counselling</Form.Label>
-                                            <Form.Control as="select" disabled value={place||""}>
-                                            <option></option>
-                                            <option>Vypin-Rajagiri Sea Shore School</option>
-                                            <option>Kakkanad</option>
-                                            <option>Thevara-SH College(East Campus)</option>
-                                            <option>Thevara-Higher Secondary School</option>
-                                            <option>Thevara-SH UP</option>
-                                            <option>Thevara-SH High School</option>
-                                            <option>Karukutty-Christ the King monastery Church </option>
-                                            <option>Kanjoor</option>
-                                            <option>Eloor-SHJ UP School</option>
-                                            <option>Kottarapalli-Amala Public School</option>
-                                            <option>Manappuram-St Teresa's High School</option>
-                                            <option>Pothy</option>
-                                            </Form.Control>
-                                        </Form.Group>
-                                    </Col>
-                                </Row> 
-                                <Row> 
-                                    <Col md={6}>
-                                        <Form.Label>Name</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            placeholder=""
-                                            maxLength={100}
-                                            value={name||""}
-                                           disabled                                            
-                                            autoFocus
-                                        />
-                                    </Col>
-                                    <Col md={3}>
-                                        <Form.Label>Age</Form.Label>
-                                        <Form.Control
-                                            type="number"
-                                            placeholder=""
-                                            
-                                            value={Age||""}
-                                           
-                                            autoFocus
-                                           disabled
-                                            min={1}
-                                        />
-                                    </Col>
-                                    <Col md={3}>
-                                        <Form.Label>Gender</Form.Label>
-                                        <Form.Control as="select" disabled value={Gender||""} >
-                                            <option></option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Others">Others</option>
-                                        </Form.Control>
-                                    </Col>
-                                </Row>  
-                                <Row>
-                                    <Col md={3}>
-                                        <Form.Label>Financial Status</Form.Label>
-                                        <Form.Control as="select" disabled value={f_status||""} >
-                                            <option></option>
-                                            <option value="APL">APL</option>
-                                            <option value="BPL">BPL</option>
-                                        </Form.Control>
-                                    </Col>
-                                    <Col md={3}>
-                                        <Form.Label>Marital Status</Form.Label>
-                                        <Form.Control as="select" disabled value={m_status||""} >
-                                        <option></option>
-                                        <option>Married</option>
-                                        <option>Single</option>
-                                        <option>Divorcee & Widower</option>
-                                        <option>Widower</option>
-                                        <option>Widow</option>
-                                        <option>Separated</option>
-                                        </Form.Control>
-                                    </Col>
-                                    <Col md={3}>
-                                        <Form.Label>School</Form.Label>
-                                        <Form.Control as="select"disabled value={School==='null'?null:School}>
-                                                <option></option>
-                                                <option value="Government">Government</option>
-                                                <option value="Aided">Aided</option>   
-                                                <option value="Private">Private</option>                           
-                                        </Form.Control>
-                                    </Col>
-                                    <Col md={3}>
-                                        <Form.Label>Religion</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            placeholder=" "
-                                            maxLength={20}
-                                           
-                                            autoFocus
-                                           disabled
-                                            value={religion==='null'?null:religion}
-                                        />
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={6}>
-                                        <Form.Label>Father's Occupation</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            placeholder=" "
-                                            maxLength={25}
-                                           
-                                            autoFocus
-                                           disabled
-                                            value={f_occupation==='null'?null:f_occupation}
-                                        />
-                                    </Col> 
-                                    <Col md={6}>
-                                        <Form.Label>Father's Education</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            placeholder=" "
-                                            maxLength={25}
-                                            
-                                            autoFocus
-                                           disabled
-                                            value={f_education==='null'?null:f_education}
-                                        />
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={6}>
-                                        <Form.Label>Mother's Occupation</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            placeholder=" "
-                                            maxLength={25}
-                                           
-                                            autoFocus
-                                           disabled
-                                            value={m_occupation==='null'?null:m_occupation}
-                                        />
-                                    </Col>
-                                    <Col md={6}>
-                                        <Form.Label>Mother's Education</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            placeholder=" "
-                                            maxLength={25}
-                                           
-                                            autoFocus
-                                           disabled
-                                            value={m_education==='null'?null:m_education}
-                                        />
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={12}>
-                                        <Form.Label>Problem</Form.Label>
-                                        <Form.Control as={"textarea"}
-                                            className="col-12 rounded form-control" 
-                                            rows={3}  
-                                            maxLength={200} 
-                                            
-                                            required
-                                           disabled
-                                            value={problem||""}
-                                        />
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={12}>
-                                        <Form.Label>History of Problem</Form.Label>
-                                        <Form.Control as={"textarea"} 
-                                            className="col-12 rounded form-control" 
-                                            rows={4}  
-                                            maxLength={500} 
-                                           disabled
-                                           
-                                            value={history==='null'?null:history}
-                                        />
-                                    </Col>
-                                </Row>
-                                <Row>  
-                                    <Col md={12}>
-                                        <Form.Label>Intervention</Form.Label>
-                                        <Form.Control as={"textarea"}
-                                            className="col-12 rounded form-control"
-                                            rows={2}
-                                            maxLength={100}
-                                           disabled
-                                            
-                                            value={Intervention==='null'?null:Intervention}
-                                        />
-                                    </Col>
-                                    <Col md={12}>
-                                        <Form.Label>Challenges by Counsellor</Form.Label>
-                                        <Form.Control as={"textarea"}
-                                        className="col-12 rounded form-control" 
-                                        rows={2}
-                                        maxLength={200}
-                                       disabled
-                                        
-                                        value={challenge==='null'?null:challenge}
-                                        />
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={12}>
-                                        <Form.Label>Referal Service</Form.Label>
-                                        <Form.Control as={"textarea"}
-                                            className="col-12 rounded form-control" 
-                                            rows={2}
-                                            maxLength={100}
-                                           disabled
-                                           
-                                            value={referral==='null'?null:referral}
-                                        />
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={6}>  
-                                        <Form.Label>Outcome</Form.Label>
-                                        <Form.Control as={"textarea"}
-                                            className="col-12 rounded form-control" 
-                                            rows={3} 
-                                            maxLength={250}
-                                           disabled
-                                           
-                                            value={outcome==='null'?null:outcome}
-                                        />
-                                    </Col>
-                                    <Col md={6}>
-                                        <Form.Label>Remarks</Form.Label>
-                                        <Form.Control as={"textarea"}
-                                            className="col-12 rounded form-control" 
-                                            rows={3} 
-                                            maxLength={200}
-                                            
-                                           disabled
-                                            value={remarks==='null'?null:remarks}
-                                        />
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col md={6}>  
-                                        <Form.Label>No. of follow up sessions</Form.Label>
-                                        <Form.Control
-                                            type="number"
-                                            placeholder=" "
-                                           
-                                           disabled
-                                            value={follow_ups||""}
-                                            autoFocus
-                                           
-                                            min={0}
-                                        />
-                                    </Col> 
-                                    <Col md={6}> 
-                                        <Form.Label>Status</Form.Label>
-                                        <Form.Control as="select"  value={status||""}disabled>
-                                            <option value="Pending">Pending</option>
-                                            <option value="Completed">Completed</option>                           
-                                        </Form.Control>
-                                    </Col>
-                                </Row>
-                                <Modal.Footer>
-                                <Form.Group className="d-flex justify-content-end align-content-end">
-                                {/* <Button variant="btn btn-warning py-1 m-1 "  onClick={handleeditClick} disabled={disableButton} style={{color:'white'}}> Edit</Button> */}
-                                {/* <Button variant="btn btn-success py-1 m-1" onClick={()=>{handlesaveClick();update(id);}} disabled={true}>Save</Button> */}
-                                <Button variant="btn btn-danger py-1 m-1" onClick={handleClose}>Close</Button>
-                                <Button onClick={()=>{handlescroll();settoastdata(true)}} className="py-1 m-1">Change Access</Button>
-                            
-                            
-                        </Form.Group>
-                        </Modal.Footer>
-                        </Form>
-                        </Modal.Body>
-                        
-                    </Modal> 
         </>
     )
 }

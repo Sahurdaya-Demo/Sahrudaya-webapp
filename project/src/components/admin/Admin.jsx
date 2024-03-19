@@ -17,7 +17,7 @@ function Admin() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [mview, setview] = useState(false);
-    const handleviewClose = () => setview(false);
+    const handleviewClose = () => {setview(false);view()};
     const handleviewShow = () => setview(true);
     const [password,setpassword]=useState('')
     const [crpassword,setcrpassword]=useState('')
@@ -51,8 +51,8 @@ function Admin() {
       url:`${LinkApi}api/${id}/`,
       data:formField,
     }).then(response=>{
-      console.log(response.data);
-      handleClose()
+      // console.log(response.data);
+      handleviewClose()
     }
     )
   }
@@ -296,7 +296,7 @@ function Admin() {
         </Modal.Footer>
       </Modal>
 
-      <Modal show={mview} onHide={handleClose} centered>
+      <Modal show={mview} onHide={handleviewClose} centered>
         {/* <Modal.Header closeButton>
           <Modal.Title>Profile Page</Modal.Title>
         </Modal.Header> */}
@@ -305,7 +305,7 @@ function Admin() {
             
             <Image className="rounded-circle mx-auto d-block"
                
-                src={`http://127.0.0.1:8000${profile.image}`}
+                src={`${LinkApi}${profile.image}`}
                 style={{width: 125, height: 125, borderRadius: 125/ 2 }}
                 // onChange={(e) => {setemailchange(e.target.value);}}
               />

@@ -7,9 +7,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import view from "./Data";
 import axios from "axios";
-import { Row,Col} from "react-bootstrap";
+
 import { LinkApi } from "../Utils/Resource";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import DataTableComponent from "./table";
 function Patients()
 {
@@ -24,150 +24,150 @@ function Patients()
     
     },[])
 
-    const[id,setid]=useState("")
-    const[date,setdate]=useState("")
-    const[place,setplace]=useState("")
-    const[name,setname]=useState("")
-    const[Age, setage] = useState(0);
-    const[Gender, setgender] = useState("")
-    const[f_status,setfinstatus]=useState("")
-    const[m_status,setmaritalstat]=useState("")
-    const[School,setschool]=useState("")
-    const[religion,setreligion]=useState("")
-    const[f_education,setfeducation]=useState("")
-    const[f_occupation,setfoccupation]=useState("")
-    const[m_education,setmeducation]=useState("")
-    const[m_occupation,setmoccupation]=useState("")
-    const[problem,setproblem]=useState("")
-    const[history,sethistory]=useState("")
-    const[Intervention,setintervention]=useState("")
-    const[challenge,setchallenge]=useState("")
-    const[follow_ups,setsession]=useState("")
-    const[referral,setreferral]=useState("")
-    const[outcome,setoutcome]=useState("")
-    const[remarks,setremarks]=useState("")
-    const[status,setstatus]=useState("")
-    const [disableButton,setDisableButton] = useState(false)
+    // const[id,setid]=useState("")
+    // const[date,setdate]=useState("")
+    // const[place,setplace]=useState("")
+    // const[name,setname]=useState("")
+    // const[Age, setage] = useState(0);
+    // const[Gender, setgender] = useState("")
+    // const[f_status,setfinstatus]=useState("")
+    // const[m_status,setmaritalstat]=useState("")
+    // const[School,setschool]=useState("")
+    // const[religion,setreligion]=useState("")
+    // const[f_education,setfeducation]=useState("")
+    // const[f_occupation,setfoccupation]=useState("")
+    // const[m_education,setmeducation]=useState("")
+    // const[m_occupation,setmoccupation]=useState("")
+    // const[problem,setproblem]=useState("")
+    // const[history,sethistory]=useState("")
+    // const[Intervention,setintervention]=useState("")
+    // const[challenge,setchallenge]=useState("")
+    // const[follow_ups,setsession]=useState("")
+    // const[referral,setreferral]=useState("")
+    // const[outcome,setoutcome]=useState("")
+    // const[remarks,setremarks]=useState("")
+    // const[status,setstatus]=useState("")
+    // const [disableButton,setDisableButton] = useState(false)
 
 
-    const [show, setShow] = useState(false);
-    const handleShow = () => setShow(true);
-    const handleClose = () => {setShow(false);setDisableButton(false);}
+    // const [show, setShow] = useState(false);
+    // const handleShow = () => setShow(true);
+    // const handleClose = () => {setShow(false);setDisableButton(false);}
     
-     const update=async(id)=>{
-    let formField = new FormData()
-    formField.append("nameofcounsellor",sessionStorage.getItem('name') )
-    formField.append("email",sessionStorage.getItem('email') )
-		formField.append('date',date)
-		formField.append('place_of_counselling',place)
-		formField.append('name',name)
-		formField.append('age',Age)
-		formField.append('gender',Gender)
-		formField.append('finacial_status',f_status)
-		formField.append('marital_status',m_status)
-		formField.append('school',School)
-		formField.append('religion',religion)
-		formField.append('fathers_education',f_education)
-		formField.append('fathers_occupation',f_occupation)
-		formField.append('mothers_education',m_education)
-		formField.append('mothers_occupation',m_occupation)
-		formField.append('problem',problem)
-		formField.append('history_of_problem',history)
-		formField.append('intervention',Intervention)
-		formField.append('challenges_by_counsellor',challenge)
-		formField.append('number_of_followup_sections',follow_ups)
-		formField.append('referral_service',referral)
-		formField.append('outcome',outcome)
-		formField.append('remarks',remarks)
-		formField.append('status',status)
-        try{
-    await axios({
-      method: 'PUT',
-    //   url:`http://127.0.0.1:8000/formsubmit/${id}/`,
-    url:`${LinkApi}formsubmit/${id}/`,
-      data:formField,
-    }).then(response=>{
-      // console.log(response.data);
-      setValidated(true)
-      handleClose()
-    }
-    )
-  }
-  catch{}
-     }
+//      const update=async(id)=>{
+//     let formField = new FormData()
+//     formField.append("nameofcounsellor",sessionStorage.getItem('name') )
+//     formField.append("email",sessionStorage.getItem('email') )
+// 		formField.append('date',date)
+// 		formField.append('place_of_counselling',place)
+// 		formField.append('name',name)
+// 		formField.append('age',Age)
+// 		formField.append('gender',Gender)
+// 		formField.append('finacial_status',f_status)
+// 		formField.append('marital_status',m_status)
+// 		formField.append('school',School)
+// 		formField.append('religion',religion)
+// 		formField.append('fathers_education',f_education)
+// 		formField.append('fathers_occupation',f_occupation)
+// 		formField.append('mothers_education',m_education)
+// 		formField.append('mothers_occupation',m_occupation)
+// 		formField.append('problem',problem)
+// 		formField.append('history_of_problem',history)
+// 		formField.append('intervention',Intervention)
+// 		formField.append('challenges_by_counsellor',challenge)
+// 		formField.append('number_of_followup_sections',follow_ups)
+// 		formField.append('referral_service',referral)
+// 		formField.append('outcome',outcome)
+// 		formField.append('remarks',remarks)
+// 		formField.append('status',status)
+//         try{
+//     await axios({
+//       method: 'PUT',
+//     //   url:`http://127.0.0.1:8000/formsubmit/${id}/`,
+//     url:`${LinkApi}formsubmit/${id}/`,
+//       data:formField,
+//     }).then(response=>{
+//       // console.log(response.data);
+//       setValidated(true)
+//       handleClose()
+//     }
+//     )
+//   }
+//   catch{}
+//      }
 
-  const delrecord=async(id)=>{
-    if (window.confirm('Are you sure you wish to delete this item?')){
-    try{
-    await axios({
-        method: 'delete',
-        // url:`http://127.0.0.1:8000/formsubmit/${id}/`,
-        url:`${LinkApi}formsubmit/${id}/`,
-      }).then(response=>{
-        console.log(response.data);
-        alert('Record Deleted Successfully!!')
-      }
-      )}
-      catch{}
-    }
+//   const delrecord=async(id)=>{
+//     if (window.confirm('Are you sure you wish to delete this item?')){
+//     try{
+//     await axios({
+//         method: 'delete',
+//         // url:`http://127.0.0.1:8000/formsubmit/${id}/`,
+//         url:`${LinkApi}formsubmit/${id}/`,
+//       }).then(response=>{
+//         console.log(response.data);
+//         alert('Record Deleted Successfully!!')
+//       }
+//       )}
+//       catch{}
+//     }
 
-  }
+//   }
 
-    const handleeditClick = () => {
-        setValidated(true)
-        setDisableButton(!disableButton)
-    };
-    const handlesaveClick = () => {
+    // const handleeditClick = () => {
+    //     setValidated(true)
+    //     setDisableButton(!disableButton)
+    // };
+    // const handlesaveClick = () => {
         
-        setDisableButton(!disableButton)
-    };
-    const getformdetails=async(id)=>{
-        setValidated(false)
-        // const result=await axios.get(`http://127.0.0.1:8000/formsubmit/${id}`)
-        const result=await axios.get(`${LinkApi}formsubmit/${id}`)
-        console.log(result.data)
-        setdate(result.data.date)
-        setid(result.data.id)
-        setname(result.data.name)
-        setage(result.data.age)
-        setgender(result.data.gender)
-        setfinstatus(result.data.finacial_status)
-        setmaritalstat(result.data.marital_status)
-        setschool(result.data.school)
-        setreligion(result.data.religion)
-        setfeducation(result.data.fathers_education)
-        setfoccupation(result.data.fathers_occupation)
-        setmeducation(result.data.mothers_education)
-        setmoccupation(result.data.mothers_occupation)
-        sethistory(result.data.history_of_problem)
-        setproblem(result.data.problem)
-        setintervention(result.data.intervention)
-        setchallenge(result.data.challenges_by_counsellor)
-        setsession(result.data.number_of_followup_sections)
-        setreferral(result.data.referral_service)
-        setoutcome(result.data.outcome)
-        setremarks(result.data.remarks)
-        setstatus(result.data.status);
-        setplace(result.data.place_of_counselling)
-    }
+    //     setDisableButton(!disableButton)
+    // };
+    // const getformdetails=async(id)=>{
+    //     setValidated(false)
+    //     // const result=await axios.get(`http://127.0.0.1:8000/formsubmit/${id}`)
+    //     const result=await axios.get(`${LinkApi}formsubmit/${id}`)
+    //     console.log(result.data)
+    //     setdate(result.data.date)
+    //     setid(result.data.id)
+    //     setname(result.data.name)
+    //     setage(result.data.age)
+    //     setgender(result.data.gender)
+    //     setfinstatus(result.data.finacial_status)
+    //     setmaritalstat(result.data.marital_status)
+    //     setschool(result.data.school)
+    //     setreligion(result.data.religion)
+    //     setfeducation(result.data.fathers_education)
+    //     setfoccupation(result.data.fathers_occupation)
+    //     setmeducation(result.data.mothers_education)
+    //     setmoccupation(result.data.mothers_occupation)
+    //     sethistory(result.data.history_of_problem)
+    //     setproblem(result.data.problem)
+    //     setintervention(result.data.intervention)
+    //     setchallenge(result.data.challenges_by_counsellor)
+    //     setsession(result.data.number_of_followup_sections)
+    //     setreferral(result.data.referral_service)
+    //     setoutcome(result.data.outcome)
+    //     setremarks(result.data.remarks)
+    //     setstatus(result.data.status);
+    //     setplace(result.data.place_of_counselling)
+    // }
 
-    const [validated, setValidated] = useState(true);
+    // const [validated, setValidated] = useState(true);
 
 
-	 const submithandler=(event)=>
-	 {
-		const form = event.currentTarget;
+	//  const submithandler=(event)=>
+	//  {
+	// 	const form = event.currentTarget;
          
-          event.preventDefault();
+    //       event.preventDefault();
        
-		if (form.checkValidity() === false) {
+	// 	if (form.checkValidity() === false) {
      
-		  event.stopPropagation();
-		}
-	  // handleReset();
-		// setValidated(false);
+	// 	  event.stopPropagation();
+	// 	}
+	//   // handleReset();
+	// 	// setValidated(false);
     
-	 }
+	//  }
     
     return(
         <>
@@ -278,7 +278,7 @@ function Patients()
                            </div>
                         </div>
                     
-                    <Modal size="xl" show={show} onHide={handleClose} centered>
+                    {/* <Modal size="xl" show={show} onHide={handleClose} centered>
                         <Modal.Header closeButton onClick={handleClose} style={{backgroundColor:"#75E3B9",opacity:".7",border:'none'}}>
                           <Modal.Title>Edit Data</Modal.Title>
                         </Modal.Header>
@@ -572,7 +572,7 @@ function Patients()
                         </Modal.Body>
                                 
                                
-                        </Modal> 
+                        </Modal>  */}
       </>
     )
 

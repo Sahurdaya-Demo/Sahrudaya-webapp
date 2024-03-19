@@ -65,7 +65,7 @@ function Counseldash(){
                         <li></li>
                         </ul>
                         <p className='lexend'>
-                        Hi , welcome <span className="lexend" style={{display:"inline",color:"lightgreen"}}>{profilejson.name}</span> ! <img src='../assets/hand.gif' style={{width:"70px",height:"70px"}}></img>
+                        Hi , welcome <span className="lexend" style={{display:"inline",color:"lightgreen"}}>{sessionStorage.getItem('name')}</span> ! <img src='../assets/hand.gif' style={{width:"70px",height:"70px"}}></img>
                         </p>
                     </div>
                 </div>

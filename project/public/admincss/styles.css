@@ -11323,23 +11323,26 @@ tfoot tr {
   }
 
   td:nth-of-type(2):before {
-    content: "Position";
+    content: "Counselor";
   }
 
   td:nth-of-type(3):before {
-    content: "Office";
+    content: "Gender";
   }
 
   td:nth-of-type(4):before {
-    content: "Age";
+    content: "Date";
   }
 
   td:nth-of-type(5):before {
-    content: "Start date";
+    content: "Counselling Plc";
   }
 
   td:nth-of-type(6):before {
-    content: "Salary";
+    content: "Problem";
+  }
+  td:nth-of-type(7):before {
+    content: "Status";
   }
 
   .dataTables_length {

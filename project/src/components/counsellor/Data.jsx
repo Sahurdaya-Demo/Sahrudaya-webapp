@@ -2,7 +2,7 @@ import axios from "axios"
 import { LinkApi } from "../Utils/Resource"
 const view=async(setprofile)=>{
     try{
-      console.log(sessionStorage.getItem('token'));
+      // console.log(sessionStorage.getItem('token'));
     await axios({
       method: 'get',
       headers: {
