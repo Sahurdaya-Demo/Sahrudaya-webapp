@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import $ from 'jquery';
 import 'datatables.net';
-
+import '../counsellor/css/datatables.css'
+import '../counsellor/css/datatables.min.css'
 // import jszip from 'jszip';
 // import pdfmake from 'pdfmake';
 import 'datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css';
@@ -15,7 +16,6 @@ import axios from "axios";
 import { LinkApi } from '../Utils/Resource';
 import LoadExternalScript from '../../LoadExternalScript';
 const DataTableComponent = ({ data=[] }) => {
-    
     const tableRef = useRef(null);
     const delrecord=async(id)=>{
         if (window.confirm('Are you sure you wish to delete this item?')){
@@ -58,9 +58,7 @@ const DataTableComponent = ({ data=[] }) => {
             }
           },
         ],
-        responsive:{
-            details: false
-        },
+        responsive:true,
         dom: 'Bfrtip', // Include buttons in the DOM
       buttons: ['csv', 'excel', 'print'],
       initComplete: function () {
@@ -101,7 +99,7 @@ const DataTableComponent = ({ data=[] }) => {
    
     return (
         <>
-        <link rel='stylesheet'type='text/css' href='https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-2.0.2/b-3.0.1/b-html5-3.0.1/b-print-3.0.1/datatables.min.css'></link>
+        {/* <link rel='stylesheet'type='text/css' href='https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-2.0.2/b-3.0.1/b-html5-3.0.1/b-print-3.0.1/datatables.min.css'></link> */}
       <div>
         <table ref={tableRef} className="table table-striped display responsive" width="100%" id='counsel'>
           <thead>

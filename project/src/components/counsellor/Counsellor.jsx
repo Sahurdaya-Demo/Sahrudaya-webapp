@@ -349,7 +349,7 @@ const handlesaveClick = () => {
           <Button variant="btn btn-primary"  onClick={handleeditClick} disabled={disableButton} >
             Edit
           </Button>
-          <Button   className='btn btn-success' variant='primary' onClick={()=>{handlesaveClick();update(profilejson.id)}} disabled={!disableButton} >
+          <Button   className='btn btn-success' variant='primary' onClick={()=>{view(setprofile);update(profilejson.id);handlesaveClick();}} disabled={!disableButton} >
           {/* {isLoading ?  <Spinner size='sm'/>:null} */}
           Save
           </Button>

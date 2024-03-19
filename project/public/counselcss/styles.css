@@ -11268,7 +11268,12 @@ thead {
 .highlight {
   background: #ffff99;
 }
-
+table.dataTable td.dt-type-date {
+  text-align: unset;
+}
+table.dataTable td.dt-type-numeric{
+  text-align: unset;
+}
 @media only screen and (max-width: 767px) {
   /* Force table to not be like tables anymore */
   table,
@@ -11323,7 +11328,7 @@ tfoot tr {
   }
 
   td:nth-of-type(2):before {
-    content: "Position";
+    content: "";
   }
 
   td:nth-of-type(3):before {
