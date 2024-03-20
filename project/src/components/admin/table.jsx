@@ -90,8 +90,8 @@ const Tbadmin=({data=[]})=>{
             render:function(data, type, row) {
                 return `
                 <div>
-                  <button class="btn btn-primary px-3 edit-btn">Edit</button>
-                  <button class="btn btn-danger delete-btn">Delete</button>
+                  <button class="btn btn-primary btn-sm px-3 edit-btn">Edit</button>
+                  <button class="btn btn-danger btn-sm delete-btn">Delete</button>
                 </div>
               `;
             }
