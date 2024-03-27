@@ -90,7 +90,7 @@ const Tbadmin=({data=[]})=>{
             render:function(data, type, row) {
                 return `
                 <div>
-                  <button class="btn btn-primary btn-sm px-3 edit-btn">Edit</button>
+                  <button class="btn btn-success btn-sm edit-btn" style={{width:'100px'}}>Edit</button>
                   <button class="btn btn-danger btn-sm delete-btn">Delete</button>
                 </div>
               `;
@@ -235,7 +235,7 @@ const handlescroll=()=>{
                 </table>
             </div>
             <Modal size='xl' id='modal' show={show} onHide={handleClose} centered>
-                        <Toast show={showA} onClose={toggleCloseA} className=' position-absolute  translate-middle-y' style={{zIndex:10000,top:`${windowHeight.current*(4.0/100)}%`,right:`${windowWidth.current*(2.0/100)}%`}}>
+                        <Toast show={showA} onClose={toggleCloseA} className=' position-absolute  translate-middle-y' style={{zIndex:10000,top:`${windowHeight.current*(4.0/100)}%`,right:`${windowWidth.current*(2.3/100)}%`}}>
                         <Toast.Header>
                             <img
                             src="holder.js/20x20?text=%20"
@@ -256,7 +256,7 @@ const handlescroll=()=>{
                             }
                             
                         </Form.Control>
-                        <Button variant='success' className='mt-2' onClick={()=>updatecaemail(id)}>Submit</Button>
+                        <Button variant='btn btn-success' className='mt-2' onClick={()=>updatecaemail(id)}>Submit</Button>
                         </Toast.Body>
                         </Toast> 
                         <Modal.Header closeButton onClick={handleClose} style={{backgroundColor:"#75E3B9",opacity:".7",border:'none'}}>
@@ -544,7 +544,7 @@ const handlescroll=()=>{
                                 {/* <Button variant="btn btn-warning py-1 m-1 "  onClick={handleeditClick} disabled={disableButton} style={{color:'white'}}> Edit</Button> */}
                                 {/* <Button variant="btn btn-success py-1 m-1" onClick={()=>{handlesaveClick();update(id);}} disabled={true}>Save</Button> */}
                                 <Button variant="btn btn-danger py-1 m-1" onClick={handleClose}>Close</Button>
-                                <Button onClick={()=>{handlescroll();settoastdata(true)}} className="py-1 m-1">Change Access</Button>
+                                <Button variant="py-1 m-1 btn btn-success"onClick={()=>{handlescroll();settoastdata(true)}}>Change Access</Button>
                             
                             
                         </Form.Group>

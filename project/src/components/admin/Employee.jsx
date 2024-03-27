@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState ,useRef} from 'react';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -11,6 +11,8 @@ import { LinkApi } from '../Utils/Resource';
 function Employee() {
   // const [items, setItems] = useState([]);
   // let empdetails
+  const counter = useRef(0);
+  const[loading,setloading]=useState(true)
   const [isLoading, setIsLoading] = useState(false);
   const [Records,setRecords]=useState([])
   const [show, setShow] = useState(false);
@@ -30,6 +32,7 @@ function Employee() {
     let todayrecord;
     let yesterdayrecord;
     let overall;
+    
     // const response= await fetch(`http://127.0.0.1:8000/api/`)
     const response= await fetch(`${LinkApi}api/`)
     const jsonData = await response.json();
@@ -77,6 +80,12 @@ function Employee() {
     
     // console.log(jsonData)
     setRecords(jsonData)
+   } 
+   const imageLoaded = () => {
+     counter.current += 1;
+     if (counter.current >= (Records.length-1)) {
+       setloading(false);
+     }
    }
 
  const handleClick = async() => {
@@ -136,7 +145,8 @@ const delemp=async(idi)=>{
             <div className="card mb-3 m-3 " style={{maxWidth: "500px"}} key={record.id}>
               <div className="row g-0">
                 <div className="col-md-4">
-                  <img src={record.image} className="rounded-start object-fit-cover" alt="..." style={{height:'100%',width:'100%'}}/>
+                  <img src="../../../loading.gif" className="rounded-start object-fit-cover" style={{height:'100%',width:'100%',display: loading ? "block" : "none"}}alt="Loading" />
+                  <img src={record.image}  onLoad={imageLoaded} className=" object-fit-cover" alt="..." style={{height:'100%',width:'100%',display: loading ? "none" : "block"}}/>
                 </div>
                 <div className="col-md-8">
                   <div className="card-body " style={{padding:"3.5px"}}>
@@ -162,9 +172,12 @@ const delemp=async(idi)=>{
                 >
                 <Button variant="success" className='mt-4'>Submissions</Button>
                 </OverlayTrigger>
-                 <button className="btn btn-danger float-end mb-1  mt-4" onClick={()=>delemp(record.id)}>Delete</button>
+                 {/* <button className="btn btn-danger float-end mb-1  mt-4" onClick={()=>delemp(record.id)}>Delete</button> */}
                   </div>
                 </div>
+              </div>
+              <div className='card-footer'>
+              <button className="btn btn-danger float-end mb-1  mt-4" onClick={()=>delemp(record.id)}>Delete</button>
               </div>
             </div>)}
 

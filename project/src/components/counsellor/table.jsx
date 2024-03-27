@@ -86,7 +86,7 @@ const DataTableComponent = ({ data=[] }) => {
             render:function(data, type, row) {
                 return `
                 <div>
-                  <button class="btn btn-primary px-3 edit-btn">Edit</button>
+                  <button class="btn btn-primary edit-btn">Edit</button>
                   <button class="btn btn-danger  delete-btn">Delete</button>
                 </div>
               `;
