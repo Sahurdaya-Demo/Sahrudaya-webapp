@@ -24,6 +24,7 @@ const Adminloading=()=>
   return (
     <>
     <link rel='stylesheet'type='text/css' href='../../../admincss/styles.css'></link>
+    <link rel='stylesheet' type='text/css' href='../../../empcss/styles.css'></link>
       {loading ? (
        
         <div className="loading-screen">
