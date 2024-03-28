@@ -1,6 +1,6 @@
 import React,{useEffect,useState,useRef} from "react";
 import AOS from "aos";
-import axios from "axios";
+// import axios from "axios";
 import "aos/dist/aos.css";
 import PureCounter from "@srexi/purecounterjs";
 import {Player} from '@lottiefiles/react-lottie-player'
@@ -101,7 +101,7 @@ const form = useRef();
   };
 return(
     <>
-    <link rel='stylesheet'type='text/css' href='../../../Homecss/style.css'></link>
+    {/* <link rel='stylesheet'type='text/css' href='../../../Homecss/style.css'></link> */}
       <header id="header" className="header fixed-top">
       <div style={{ top: visible ? '0' : '-80px', position: 'fixed', width: '100%', transition: 'top 0.5s' }}>
  <div className="container-fluid container-xl d-flex align-items-center justify-content-between">

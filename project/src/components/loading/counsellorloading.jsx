@@ -15,6 +15,8 @@ const Counsellorloading=()=>
   }, []);
   return (
     <>
+    <link rel='stylesheet'type='text/css' href='../../../counselcss/styles.css'></link>
+    <link rel='stylesheet'type='text/css' href='../../../formcss/styles.css'></link> 
       {loading ? (
         <div className="loading-screen">
           <img src="../../../loading.gif" alt="Loading" />

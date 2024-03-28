@@ -15,6 +15,7 @@ const Main=()=>{
   }, []);
   return (
     <div className="App">
+       <link rel='stylesheet'type='text/css' href='../../../Homecss/style.css'></link>
       {loading ? (
         <div className="loading-screen">
           <img src="loading.gif" alt="Loading" />

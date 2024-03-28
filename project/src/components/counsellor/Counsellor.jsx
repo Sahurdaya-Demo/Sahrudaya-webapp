@@ -124,8 +124,8 @@ const handlesaveClick = () => {
   catch{}
   return (
     <>
-    <link rel='stylesheet'type='text/css' href='../../../counselcss/styles.css'></link>
-    <link rel='stylesheet'type='text/css' href='../../../formcss/styles.css'></link> 
+    {/* <link rel='stylesheet'type='text/css' href='../../../counselcss/styles.css'></link>
+    <link rel='stylesheet'type='text/css' href='../../../formcss/styles.css'></link>  */}
     <div className='sb-nav-fixed text-lg-start body'>
        
     <nav className="sb-topnav navbar navbar-expand navbar-dark ">

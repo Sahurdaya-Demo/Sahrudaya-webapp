@@ -136,7 +136,7 @@ function Admin() {
     }
   return (
     <>
-    <link rel='stylesheet'type='text/css' href='../../../admincss/styles.css'></link>
+    {/* <link rel='stylesheet'type='text/css' href='../../../admincss/styles.css'></link> */}
     <div className='sb-nav-fixed text-lg-start body'>
          
     <nav className="sb-topnav navbar navbar-expand navbar-dark">
