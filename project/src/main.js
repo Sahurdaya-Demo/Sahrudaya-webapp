@@ -14,7 +14,7 @@ const Main=()=>{
     return () => clearTimeout(timeout);
   }, []);
   return (
-    <div className="App">
+    <>
        <link rel='stylesheet'type='text/css' href='../../../Homecss/style.css'></link>
       {loading ? (
         <div className="loading-screen">
@@ -23,9 +23,9 @@ const Main=()=>{
       ) : (
       <Home/>
     )}
-    
-    </div>
+    </>
     )
+    
 }
 
 export default Main;

@@ -107,7 +107,7 @@ return(
  <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <div  className="logo d-flex align-items-center">
-        <img src="assets/logo.png" style={{width:"70px"}} alt=""/>
+        <img src="../../../assets/logo.png" style={{width:"70px"}} alt=""/>
         <span>Sahrudaya Rajagiri</span>
       </div>
 
