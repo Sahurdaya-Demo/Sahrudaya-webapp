@@ -8,6 +8,7 @@ from employee.models import employee
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from .models import User
+
 # from rest_framework_simplejwt.authentication import JWTAuthentication
 # from rest_framework_simplejwt.token_blacklist.models import \
 # OutstandingToken, BlacklistedToken
@@ -146,13 +147,18 @@ class DisableUser(APIView):
   def post(self, request,format=None):
     try:
       user=User.objects.get(email=request.data['email'])
+      usere=employee.objects.get(email=request.data['email'])
       if(user.is_active==True):
         user.is_active=False
+        usere.is_active=False
         user.save()
+        usere.save()
         return Response({'msg': 'Disabled'}, status=status.HTTP_200_OK)
       else:
         user.is_active=True
+        usere.is_active=True
         user.save()
+        usere.save()
         return Response({'msg': 'Enabled'}, status=status.HTTP_200_OK)
     except:
       return Response({'errors': 'Pass and crpwd not match'}, status=status.HTTP_400_BAD_REQUEST)

@@ -9,5 +9,6 @@ class employee(models.Model):
     qualification=models.CharField(max_length=255,default='null')
     phone=models.CharField(max_length=20,unique=True,default='00000000')
     type=models.CharField(max_length=15,default='counsellor')
+    is_active = models.BooleanField(default=True)
 class ValidLink(models.Model):
     secure_str=models.CharField(max_length=50)

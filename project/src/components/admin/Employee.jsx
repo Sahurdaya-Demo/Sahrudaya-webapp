@@ -59,7 +59,7 @@ function Employee() {
       catch{}
     }
     
-    // console.log(jsonData)
+    // console.log(jsonData[1].is_active)
     setRecords(jsonData)
     
    } 
@@ -110,15 +110,16 @@ const delemp=async(idi)=>{
     }
   }
 }
-const disable=async(email)=>{
-  if (window.confirm('Are you sure to disable this user?')){
+const disable=async(email,status)=>{
+  if (window.confirm(`Are you sure to ${status} this user?`)){
   try{
+    // retrieve()
     await axios({
       method: 'post',
       data:{'email':email},
       url:`${LinkApi}disable/`,    
     }).then(response=>{
-      
+      retrieve();
     })}
     catch{
      alert('Record not found')
@@ -164,7 +165,7 @@ const disable=async(email)=>{
                     >
                      <Button variant="success" className=' me-sm-2 me-0' onClick={()=>count(record.email)}><i className="bi bi-file-earmark-fill"></i></Button>
                     </OverlayTrigger>
-                     <button className="btn btn-warning me-sm-2 me-0" onClick={()=>disable(record.email)} style={{color:'white'}}><i className="bi bi-person-fill-slash"></i></button>
+                     <button className={`btn  ${record.is_active?'btn-warning':'btn-secondary'} me-sm-2 me-0`} onClick={()=>disable(record.email,record.is_active?'disable':'enable')} style={{color:'white'}}><i className="bi bi-person-fill-slash"></i></button>
                      <button className="btn btn-danger me-sm-3 me-0" onClick={()=>delemp(record.id)}><i className="bi bi-trash-fill"></i></button>
                      </div>
                   </div>
