@@ -12,7 +12,6 @@ function Employee() {
   // const [items, setItems] = useState([]);
   // let empdetails
   const counter = useRef(0);
-  const[status,setstatus]=useState(false);
   const[loading,setloading]=useState(true)
   const [isLoading, setIsLoading] = useState(false);
   const [Records,setRecords]=useState([])
