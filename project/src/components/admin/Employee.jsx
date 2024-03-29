@@ -12,6 +12,7 @@ function Employee() {
   // const [items, setItems] = useState([]);
   // let empdetails
   const counter = useRef(0);
+  const[status,setstatus]=useState(false);
   const[loading,setloading]=useState(true)
   const [isLoading, setIsLoading] = useState(false);
   const [Records,setRecords]=useState([])
@@ -29,7 +30,6 @@ function Employee() {
   retrieve()
   },[])
   const count=async(email)=>{
-    console.log('hello')
     try{
       // console.log(sessionStorage.getItem('token'));
     await axios({
@@ -94,7 +94,7 @@ function Employee() {
   }
 }
 const delemp=async(idi)=>{
-  if (window.confirm('Are you sure you wish to delete this item?')){
+  if (window.confirm('Are you sure to delete this user?')){
   try{
     await axios({
       method: 'delete',
@@ -110,25 +110,35 @@ const delemp=async(idi)=>{
     }
   }
 }
-  // const toggleCardBody = (id) => {
-  //   setRecords(prevItems =>
-  //     prevItems.map(record =>
-  //       record.id === id ? { ...record, showCardBody: !record.showCardBody } : record
-  //     )
-  //   );
-  // };
+const disable=async(email)=>{
+  if (window.confirm('Are you sure to disable this user?')){
+  try{
+    await axios({
+      method: 'post',
+      data:{'email':email},
+      url:`${LinkApi}disable/`,    
+    }).then(response=>{
+      
+    })}
+    catch{
+     alert('Record not found')
+    }
+  }
+}
+
   return (
     <>
       {/* <link rel='stylesheet' type='text/css' href='../../../empcss/styles.css'></link> */}
+      
           <div className='counsellors'>
            <div className="row-12 p-0 d-flex flex-wrap justify-content-center flex-sm-row flex-column">
 
             {Records.map(record=>
-            <div className="card mb-3 m-3 " style={{maxWidth: "500px"}} key={record.id}>
+            <div className="card mb-3 m-3 rounded-5 " style={{maxWidth: "500px"}} key={record.id}>
               <div className="row g-0">
                 <div className="col-md-4">
-                  <img src="../../../loading.gif" className="rounded-start object-fit-cover" style={{height:'100%',width:'100%',display: loading ? "block" : "none"}}alt="Loading" />
-                  <img src={record.image}  onLoad={imageLoaded} className=" object-fit-cover" alt="..." style={{height:'100%',width:'100%',display: loading ? "none" : "block"}}/>
+                  <img src="../../../loading.gif" className=" object-fit-cover" style={{height:'100%',width:'100%',display: loading ? "block" : "none"}}alt="Loading" />
+                  <img src={record.image}  onLoad={imageLoaded} className="object-fit-cover" alt="..." style={{height:'100%',width:'100%',display: loading ? "none" : "block"}}/>
                 </div>
                 <div className="col-md-8">
                   <div className="card-body " style={{padding:"3.5px"}}>
@@ -138,80 +148,76 @@ const delemp=async(idi)=>{
                     <p className="card-text text-success ms-1">Email : <small className="text-body-secondary text-dark">{record.email}</small></p>
                     <p className="card-text text-success ms-1">Phone No. : <small className="text-body-secondary text-dark">{record.phone}</small></p>
                     <p className="card-text text-success ms-1">Qualification : <small className="text-body-secondary text-dark">{record.qualification}</small></p>
-
-              
-                  <OverlayTrigger
-                  trigger="click"
-                  // key={placement}
-                  placement='bottom'
-                  rootClose
-                  overlay={
-                    <Popover >
-                      <Popover.Header as="h3">Today    :<strong> {today}</strong></Popover.Header>
-                      <Popover.Header as="h3">Yesterday:<strong> {yesterday}</strong></Popover.Header>
-                      <Popover.Header as="h3">Overall:< strong> {overall}</strong></Popover.Header>
-                    </Popover>
-                  }
-                >
-                <Button variant="success" className='mt-4' onClick={()=>count(record.email)}>Submissions</Button>
-                </OverlayTrigger>
-                 {/* <button className="btn btn-danger float-end mb-1  mt-4" onClick={()=>delemp(record.id)}>Delete</button> */}
+                    <div className=' float-lg-end float-md-end float-sm-none mx-sm-0 mx-5 mb-2 mb-sm-0 d-flex justify-content-between'>
+                    <OverlayTrigger
+                      trigger="click"
+                      // key={placement}
+                      placement='bottom'
+                      rootClose
+                      overlay={
+                        <Popover >
+                          <Popover.Header as="h3">Today    :<strong> {today}</strong></Popover.Header>
+                          <Popover.Header as="h3">Yesterday:<strong> {yesterday}</strong></Popover.Header>
+                          <Popover.Header as="h3">Overall:< strong> {overall}</strong></Popover.Header>
+                        </Popover>
+                      }
+                    >
+                     <Button variant="success" className=' me-sm-2 me-0' onClick={()=>count(record.email)}><i className="bi bi-file-earmark-fill"></i></Button>
+                    </OverlayTrigger>
+                     <button className="btn btn-warning me-sm-2 me-0" onClick={()=>disable(record.email)} style={{color:'white'}}><i className="bi bi-person-fill-slash"></i></button>
+                     <button className="btn btn-danger me-sm-3 me-0" onClick={()=>delemp(record.id)}><i className="bi bi-trash-fill"></i></button>
+                     </div>
                   </div>
                 </div>
               </div>
-              <div className='card-footer'>
-              <button className="btn btn-danger float-end mb-1  mt-4" onClick={()=>delemp(record.id)}>Delete</button>
-              </div>
+              
             </div>)}
-
-{/* <div className="col-12 p-0 d-flex flex-wrap justify-content-center flex-sm-row flex-column"> */}
-
               <div className="mb-0 m-0 " >
-                  <Card className="Card credentialing" onClick={handleShow} style={{ width: "12.2rem", height: "16rem",}}>
-                  <div className='overlay'></div>
-                  <div className='circle'>
-                <CardBody className="card-body ">
-                 
-                </CardBody>
+                    <Card className="Card credentialing rounded-5" onClick={handleShow} style={{ width: "12.2rem", height: "14rem",}}>
+                    <div className='overlay'></div>
+                    <div className='circle'>
+                  <CardBody className="card-body ">
+                  
+                  </CardBody>
+                  </div>
+                  <p>Register Counsellors</p>
+                </Card>
                 </div>
-                <p>Register Counsellors</p>
-              </Card>
                 </div>
-           </div>
-          </div>
+              </div>
 
  
           <Modal show={show} onHide={handleClose} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Register Counsellor</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className='p-2'>
-			<Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="name@example.com"
-                onChange={(e) => setemail(e.target.value)}
-                autoFocus
-              />
-            </Form.Group>
-            <div className={`${btalert!==''?`${btalert==='success'?'alert alert-success':'alert alert-danger'}`:'visible-false'}`} role="alert">
-                 {altmsg}
-            </div>
-          </Form>
-		  </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button  onClick={handleClick} className='btn-primary ' variant='primary'disabled={isLoading}>
-						{isLoading ?  <Spinner size='sm'/>:null}
-            Submit
-          </Button>
-        </Modal.Footer>
+            <Modal.Header closeButton>
+              <Modal.Title>Register Counsellor</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className='p-2'>
+          <Form>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="name@example.com"
+                    onChange={(e) => setemail(e.target.value)}
+                    autoFocus
+                  />
+                </Form.Group>
+                <div className={`${btalert!==''?`${btalert==='success'?'alert alert-success':'alert alert-danger'}`:'visible-false'}`} role="alert">
+                    {altmsg}
+                </div>
+              </Form>
+          </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+              </Button>
+              <Button  onClick={handleClick} className='btn-primary ' variant='primary'disabled={isLoading}>
+                {isLoading ?  <Spinner size='sm'/>:null}
+                Submit
+              </Button>
+            </Modal.Footer>
       </Modal>
-       
+      
     </>
   );
 }

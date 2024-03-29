@@ -141,4 +141,20 @@ class UserPasswordResetView(APIView):
     except:
       return Response({'errors': 'Pass and crpwd not match'}, status=status.HTTP_400_BAD_REQUEST)
 
+class DisableUser(APIView):
+  # renderer_classes = [UserRenderer]
+  def post(self, request,format=None):
+    try:
+      user=User.objects.get(email=request.data['email'])
+      if(user.is_active==True):
+        user.is_active=False
+        user.save()
+        return Response({'msg': 'Disabled'}, status=status.HTTP_200_OK)
+      else:
+        user.is_active=True
+        user.save()
+        return Response({'msg': 'Enabled'}, status=status.HTTP_200_OK)
+    except:
+      return Response({'errors': 'Pass and crpwd not match'}, status=status.HTTP_400_BAD_REQUEST)
+
 

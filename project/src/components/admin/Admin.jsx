@@ -244,7 +244,7 @@ function Admin() {
                         
                     </div>
                 </main>
-                <footer className="py-4 bg-light mt-auto">
+                {/* <footer className="py-4 bg-light mt-auto">
                     <div className="container-fluid px-4">
                         <div className="d-flex align-items-center justify-content-between small">
                             <div className="text-muted">Copyright &copy; Your Website 2023</div>
@@ -255,7 +255,7 @@ function Admin() {
                             </div>
                         </div>
                     </div>
-                </footer>
+                </footer> */}
             </div>
         </div>
       </div>
