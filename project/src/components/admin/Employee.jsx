@@ -21,54 +21,35 @@ function Employee() {
   const[btalert,setbtalert]=useState('')
   const[altmsg,setaltmsg]=useState('')
   const[email,setemail]=useState('')
+  const[today,settoday]=useState('')
+  const[overall,setoverall]=useState('')
+  const[yesterday,setyesterday]=useState('')
   // let json;
-  useEffect(()=>{
-  // setInterval(()=>{
-  //   retrieve()
-  // },5000)
+  useEffect(()=>{ 
   retrieve()
   },[])
+  const count=async(email)=>{
+    console.log('hello')
+    try{
+      // console.log(sessionStorage.getItem('token'));
+    await axios({
+      method: 'post',
+      data:{'email':email},
+      // url:'http://127.0.0.1:8000/profile/',
+      url:`${LinkApi}demo/`,
+    }).then(response=>{
+        settoday(response.data.today)
+        setyesterday(response.data.yesterday)
+        setoverall(response.data.overall)
+        
+    })
+  }
+  catch{}
+}
   const retrieve=async()=>{
-    let todayrecord;
-    let yesterdayrecord;
-    let overall;
     
-    // const response= await fetch(`http://127.0.0.1:8000/api/`)
     const response= await fetch(`${LinkApi}api/`)
     const jsonData = await response.json();
-    // const responsecon= await fetch(`http://127.0.0.1:8000/formsubmit/`)
-    const responsecon= await fetch(`${LinkApi}formsubmit/`)
-    const jsonDatacon = await responsecon.json();
-    let yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    var today = new Date();
-    var ddy = String(yesterday.getDate()).padStart(2, '0');
-    var mmy = String(yesterday.getMonth() + 1).padStart(2, '0'); 
-    var yyy =  yesterday.getFullYear();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-     today = yyyy + '-' + mm + '-' + dd ;
-     yesterday = yyy + '-' + mmy + '-' + ddy;
-    //  console.log(today,"",yesterday)
-    for(let i=0;i<Object.keys(jsonData).length;i++)
-    {
-      yesterdayrecord=0
-      todayrecord=0;
-      overall=0;
-      for(let j=0;j<Object.keys(jsonDatacon).length;j++){
-      if(jsonData[i].email===jsonDatacon[j].email){
-        overall++;
-        if(jsonDatacon[j].date===today)
-          todayrecord++
-        if(jsonDatacon[j].date===yesterday)
-          yesterdayrecord++
-      }
-      }
-      jsonData[i]['todaycount']=todayrecord;
-      jsonData[i]['yesterdaycount']=yesterdayrecord;
-      jsonData[i]['overall']=overall;
-    }
     
     for(let i=0;i<Object.keys(jsonData).length;i++){
       try{
@@ -80,6 +61,7 @@ function Employee() {
     
     // console.log(jsonData)
     setRecords(jsonData)
+    
    } 
    const imageLoaded = () => {
      counter.current += 1;
@@ -162,15 +144,16 @@ const delemp=async(idi)=>{
                   trigger="click"
                   // key={placement}
                   placement='bottom'
+                  rootClose
                   overlay={
                     <Popover >
-                      <Popover.Header as="h3">Today    :<strong> {record.todaycount}</strong></Popover.Header>
-                      <Popover.Header as="h3">Yesterday:<strong> {record.yesterdaycount}</strong></Popover.Header>
-                      <Popover.Header as="h3">Overall:< strong> {record.overall}</strong></Popover.Header>
+                      <Popover.Header as="h3">Today    :<strong> {today}</strong></Popover.Header>
+                      <Popover.Header as="h3">Yesterday:<strong> {yesterday}</strong></Popover.Header>
+                      <Popover.Header as="h3">Overall:< strong> {overall}</strong></Popover.Header>
                     </Popover>
                   }
                 >
-                <Button variant="success" className='mt-4'>Submissions</Button>
+                <Button variant="success" className='mt-4' onClick={()=>count(record.email)}>Submissions</Button>
                 </OverlayTrigger>
                  {/* <button className="btn btn-danger float-end mb-1  mt-4" onClick={()=>delemp(record.id)}>Delete</button> */}
                   </div>

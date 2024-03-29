@@ -1,3 +1,5 @@
+from datetime import timedelta
+from django.db import connection
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import status,permissions
@@ -6,6 +8,7 @@ from .models import employee,ValidLink
 from account.models import User
 from rest_framework.views import APIView
 from .serializers import EmpSerializer,ValidSerializer
+from django.utils import timezone
 class EmpView(viewsets.ModelViewSet):
     queryset = employee.objects.all()
     serializer_class = EmpSerializer
@@ -55,4 +58,21 @@ class ValidGet(APIView):
                return Response({'errors':'link invalid'}, status=status.HTTP_200_OK)  
           else:
                return Response({'msg':'link valid'}, status=status.HTTP_201_CREATED)
+
+class GetCount(APIView):
+     def post(self,request,format=None):
+          today_date = timezone.now().date()
+          yesterday_date = today_date - timedelta(days=1)
+          query=f'''select COUNT(*) from consellor_counsellor c join employee_employee e on c.email=e.email where e.email='{request.data['email']}';
+                  select COUNT(*) from consellor_counsellor c join employee_employee e on c.email=e.email where e.email='{request.data['email']}'AND c.date='{today_date}';
+                  select COUNT(*) from consellor_counsellor c join employee_employee e on c.email=e.email where e.email='{request.data['email']}'AND c.date='{yesterday_date}';
+                 '''
+          with connection.cursor() as cursor:
+            cursor.execute(query)
+            overall=str(cursor.fetchall()[0][0])
+            cursor.nextset()
+            today=str(cursor.fetchall()[0][0])
+            cursor.nextset()
+            yesterday=str(cursor.fetchall()[0][0])
+          return Response({'today':today,'overall':overall,'yesterday':yesterday}, status=status.HTTP_200_OK)  
 

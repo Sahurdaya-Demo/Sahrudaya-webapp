@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from account.views import SendPasswordResetEmailView, UserChangePasswordView, UserLoginView, UserProfileView, UserRegistrationView, UserPasswordResetView,UserLogout,SendRegisterEmail,EmailSearch
 from django.conf import settings
-from employee.views import EmpView,ValidPost,ValidGet
+from employee.views import EmpView,ValidPost,ValidGet,GetCount
 from consellor.views import submitview,emailchange,demo
 from django.conf.urls.static import static
 from rest_framework import routers
@@ -27,5 +27,5 @@ urlpatterns = [
     path('validget',ValidGet.as_view(),name='validget'),
     path('formsubmit/',include(route2.urls),name='formsubmit'),
     path('emailchange/',emailchange.as_view(),name='emailchange'),
-    path('demo/',demo.as_view(),name='demo')
+    path('demo/',GetCount.as_view(),name='demo')
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
