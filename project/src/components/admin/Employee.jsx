@@ -128,7 +128,7 @@ const disable=async(email,status)=>{
 
   return (
     <>
-      {/* <link rel='stylesheet' type='text/css' href='../../../empcss/styles.css'></link> */}
+      <link rel='stylesheet' type='text/css' href='../../../empcss/styles.css'></link>
       
           <div className='counsellors'>
            <div className="row-12 p-0 d-flex flex-wrap justify-content-center flex-sm-row flex-column">
