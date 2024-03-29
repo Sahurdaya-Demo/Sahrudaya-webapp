@@ -84,17 +84,17 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'Sayooj123$sahrudaya',
-        # 'USER': 'Sayooj123',
-        # 'PASSWORD': 'sahrudaya',
-        # 'HOST': 'Sayooj123.mysql.pythonanywhere-services.com',
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sahrudaya',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'Localhost',
-        'PORT': '3306',
+        'NAME': 'Sayooj123$sahrudaya',
+        'USER': 'Sayooj123',
+        'PASSWORD': 'sahrudaya',
+        'HOST': 'Sayooj123.mysql.pythonanywhere-services.com',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'sahrudaya',
+        # 'USER': 'root',
+        # 'PASSWORD': '',
+        # 'HOST': 'Localhost',
+        # 'PORT': '3306',
     }
 }
 # DATABASES = {
