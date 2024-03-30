@@ -7,7 +7,7 @@ import { Button, Spinner } from 'react-bootstrap';
 import './logincss/main.css'
 import './logincss/util.css'
 import './fonts/font-awesome-4.7.0/css/font-awesome.min.css'
-import portr from './images/potr.png'
+// import portr from './images/potr.png'
 import LoadExternalScript from '../../LoadExternalScript';
 import Modal from 'react-bootstrap/Modal'
 // import Button from 'react-bootstrap/Button';
@@ -96,7 +96,7 @@ function Login(){
                     
                     <img src={portr}  />
         </Carousel> */}
-		<img  src={portr} alt='logo'/>
+		<img  src='../../../logo.jpg' alt='logo' sty/>
 				</div>
          
         
