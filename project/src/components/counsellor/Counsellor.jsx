@@ -5,7 +5,7 @@ import { Button,Image,Form} from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal'
 import LoadExternalScript from '../../LoadExternalScript';
 import axios from 'axios';
-import Counseldash from './Counseldash';
+import { UnloadExternalScript } from '../../UnloadExternalScript';
 import view from './Data';
 import { LinkApi } from '../Utils/Resource';
 function Counsellor() {
@@ -37,7 +37,11 @@ function Counsellor() {
         view(setprofile)
         sessionStorage.setItem('type','counselor')
     }
-   
+    return () => {
+    
+      UnloadExternalScript(['https://code.jquery.com/jquery-3.7.0.js','https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js','https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js','https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js','https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js','https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js']);
+     
+    };
     // return()=>{console.log('refresh')}
   },[])
   const changepassword=async()=>{

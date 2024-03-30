@@ -56,6 +56,7 @@ function Home(){
     return () => {
       window.removeEventListener('scroll', handleScroll);
       UnloadExternalScript(['js/main.js'])
+      // console.log('hello')
     };
   }, [prevScrollpos]);
 

@@ -1,5 +1,5 @@
 export const UnloadExternalScript = (scriptToremove) => {
-
+console.log(scriptToremove[0])
     for(let j=0;j<scriptToremove.length;j++){
     let allsuspects=document.getElementsByTagName("script");
     // console.log(allsuspects.length)

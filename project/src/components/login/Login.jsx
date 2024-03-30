@@ -16,7 +16,7 @@ import CbLogin from '../Utils/CbLogin';
 // // import useLogin from '../../useLogin';
 // import { UnloadExternalScript } from '../../UnloadExternalScript';
 import { LinkApi } from '../Utils/Resource';
-
+import { UnloadExternalScript } from '../../UnloadExternalScript';
 function Login(){
   const [isLoading, setIsLoading] = useState(false);
   const[email,setemail]=useState('')
@@ -31,6 +31,11 @@ function Login(){
   useEffect(()=>{
   LoadExternalScript(['loginvendor/jquery/jquery-3.2.1.min.js','loginjs/main.js']);
   // return()=>{UnloadExternalScript(['loginvendor/jquery/jquery-3.2.1.min.js','loginjs/main.js']);}
+  return () => {
+    
+    UnloadExternalScript(['loginvendor/jquery/jquery-3.2.1.min.js','loginjs/main.js'])
+   
+  };
   },[])
   
   const handleSubmit=(e)=>{

@@ -3,7 +3,7 @@ import $ from 'jquery';
 import 'datatables.net';
 import '../counsellor/css/datatables.css'
 import '../counsellor/css/datatables.min.css'
-// import jszip from 'jszip';
+import jszip from 'jszip';
 // import pdfmake from 'pdfmake';
 import 'datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css';
 import 'datatables.net-buttons-bs5';
@@ -21,6 +21,7 @@ import Button from 'react-bootstrap/Button';
 import { LinkApi } from '../Utils/Resource';
 import LoadExternalScript from '../../LoadExternalScript';
 const DataTableComponent = ({ data=[] }) => {
+  window.JSZip = jszip;
     const tableRef = useRef(null);
     const handleShow = () => setShow(true);
     const handleClose = () => {setShow(false);setDisableButton(false);}
@@ -95,6 +96,7 @@ const DataTableComponent = ({ data=[] }) => {
         ],
         responsive:true,
         dom: 'Bfrtip', // Include buttons in the DOM
+        pageLength: 5,
       buttons: ['csv', 'excel', 'print'],
       initComplete: function () {
         // Add event listeners to the buttons after DataTable initialization

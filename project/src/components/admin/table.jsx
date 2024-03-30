@@ -8,7 +8,8 @@ import { Row,Col} from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-// import jszip from 'jszip';
+import LoadExternalScript from '../../LoadExternalScript';
+import jszip from 'jszip';
 // import pdfmake from 'pdfmake';
 import 'datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css';
 import 'datatables.net-buttons-bs5';
@@ -19,6 +20,7 @@ import axios from 'axios';
 import { LinkApi } from '../Utils/Resource';
 import 'datatables.net-responsive-bs5';
 const Tbadmin=({data=[]})=>{
+    window.JSZip = jszip;
   const windowWidth = useRef(window.innerWidth);
   const windowHeight = useRef(window.innerHeight);
   const [show, setShow] = useState(false);
@@ -57,6 +59,7 @@ const Tbadmin=({data=[]})=>{
   const tableRef = useRef(null);
     useEffect(()=>{
         if (!tableRef.current || !Array.isArray(data) || data.length === 0) return;
+       
         const dataTable = $(tableRef.current).DataTable({
         data,
         columns: [
@@ -99,6 +102,7 @@ const Tbadmin=({data=[]})=>{
         ],
         responsive:true,
         dom: 'Bfrtip', // Include buttons in the DOM
+        pageLength: 5,
         buttons: ['csv', 'excel', 'print'],
         initComplete: function () {
 

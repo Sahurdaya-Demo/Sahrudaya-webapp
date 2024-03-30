@@ -3,38 +3,19 @@ import view from './Data';
 // import AnimatedNumbers from "react-animated-numbers"
 import CountUp from 'react-countup';
 import axios from 'axios';
-
+import LoadExternalScript from '../../LoadExternalScript';
 function Counseldash(){
     const [profile,setprofile]=useState('')
-    // const [pendingRecords, setPendingRecords] = useState([]);
-    // const [completedRecords, setCompletedRecords] = useState([]);
-    // const [pendingCount, setPendingCount] = useState(0);
-    // const [completedCount, setCompletedCount] = useState(0);
-    // let count=2;
     let profilejson=[]
     let countjson=[]
     let pendingRecords;
     let completedRecords;
     let todayrecord;
-    // const[name,setname]=useState('')
     useEffect(()=>{
 		view(setprofile)
-        // retrieve()
+        // LoadExternalScript(['https://code.jquery.com/jquery-3.7.0.js','https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js','https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js','https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js','https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js','https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js']);
 	},[])
-    // const retrieve=()=>{
-    //     // const response= await fetch(`http://127.0.0.1:8000/formsubmit/`)
-    //     // const jsonData = await response.json();
-    //     try {
-    //         // console.log(countjson)
-    //         const pendingRecords = profile[1].filter(record => record.status === 'Pending');
-    //         const completedRecords = profile[1].filter(record => record.status === 'Completed');
-    //             setPendingRecords(pendingRecords.length);
-    //             setCompletedRecords(completedRecords.length);
-                
-    //         } catch (error) {
-    //             console.error('Error', error);
-    //         }
-    // }
+   
     try{
     profilejson=profile[0][0]
     countjson=profile[1]

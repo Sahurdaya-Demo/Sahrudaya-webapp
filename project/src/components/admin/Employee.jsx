@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Card, CardBody } from "reactstrap";
+import $ from 'jquery';
 import axios from 'axios';
 import {Spinner } from 'react-bootstrap';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -11,6 +12,7 @@ import { LinkApi } from '../Utils/Resource';
 function Employee() {
   // const [items, setItems] = useState([]);
   // let empdetails
+
   const counter = useRef(0);
   const[loading,setloading]=useState(true)
   const [isLoading, setIsLoading] = useState(false);
@@ -45,6 +47,7 @@ function Employee() {
   }
   catch{}
 }
+
   const retrieve=async()=>{
     
     const response= await fetch(`${LinkApi}api/`)
@@ -156,13 +159,14 @@ const disable=async(email,status)=>{
                       rootClose
                       overlay={
                         <Popover >
+                          <Popover.Header as="h2"><strong>Submissions</strong></Popover.Header>
                           <Popover.Header as="h3">Today    :<strong> {today}</strong></Popover.Header>
                           <Popover.Header as="h3">Yesterday:<strong> {yesterday}</strong></Popover.Header>
                           <Popover.Header as="h3">Overall:< strong> {overall}</strong></Popover.Header>
                         </Popover>
                       }
                     >
-                     <Button variant="success" className=' me-sm-2 me-0' onClick={()=>count(record.email)}><i className="bi bi-file-earmark-fill"></i></Button>
+                     <a  className=' btn btn-success me-sm-2 me-0'  data-placement="bottom" data-toggle="popover" data-trigger="hover" data-content="hello" onClick={()=>count(record.email)}><i className="bi bi-file-earmark-fill"></i></a>
                     </OverlayTrigger>
                      <button className={`btn  ${record.is_active?'btn-warning':'btn-secondary'} me-sm-2 me-0`} onClick={()=>disable(record.email,record.is_active?'disable':'enable')} style={{color:'white'}}><i className="bi bi-person-fill-slash"></i></button>
                      <button className="btn btn-danger me-sm-3 me-0" onClick={()=>delemp(record.id)}><i className="bi bi-trash-fill"></i></button>
