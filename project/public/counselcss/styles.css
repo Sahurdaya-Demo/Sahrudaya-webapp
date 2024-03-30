@@ -2896,8 +2896,8 @@ textarea.form-control-lg {
 
 .btn-success {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #198754;
-  --bs-btn-border-color: #198754;
+  --bs-btn-bg: #2d9c74;
+  --bs-btn-border-color: #2d9c74;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #157347;
   --bs-btn-hover-border-color: #146c43;
@@ -4529,7 +4529,7 @@ textarea.form-control-lg {
   --bs-pagination-hover-border-color: #dee2e6;
   --bs-pagination-focus-color: var(--bs-link-hover-color);
   --bs-pagination-focus-bg: #e9ecef;
-  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0);
   --bs-pagination-active-color: #fff;
   --bs-pagination-active-bg: #0d6efd;
   --bs-pagination-active-border-color: #0d6efd;
@@ -4573,8 +4573,8 @@ textarea.form-control-lg {
 .page-link.active, .datatable-pagination a.active, .active > .page-link, .datatable-pagination .active > a {
   z-index: 3;
   color: var(--bs-pagination-active-color);
-  background-color: var(--bs-pagination-active-bg);
-  border-color: var(--bs-pagination-active-border-color);
+  background-color: #2d9c74;
+  border-color: #2d9c74;
 }
 .page-link.disabled, .datatable-pagination a.disabled, .disabled > .page-link, .datatable-pagination .disabled > a {
   color: var(--bs-pagination-disabled-color);
@@ -11328,23 +11328,23 @@ tfoot tr {
   }
 
   td:nth-of-type(2):before {
-    content: "";
+    content: "Gender";
   }
 
   td:nth-of-type(3):before {
-    content: "Office";
+    content: "Date";
   }
 
   td:nth-of-type(4):before {
-    content: "Age";
+    content: "Counselling plc";
   }
 
   td:nth-of-type(5):before {
-    content: "Start date";
+    content: "Problem";
   }
 
   td:nth-of-type(6):before {
-    content: "Salary";
+    content: "Status";
   }
 
   .dataTables_length {
