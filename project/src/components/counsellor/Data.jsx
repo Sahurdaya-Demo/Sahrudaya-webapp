@@ -12,7 +12,7 @@ const view=async(setprofile)=>{
       // url:'http://127.0.0.1:8000/profile/',
       url:`${LinkApi}profile/`,
     }).then(response=>{
-        // console.log(response.data[0][0])
+        // console.log(response.data)
         sessionStorage.setItem('name',response.data[0][0].name)
         sessionStorage.setItem('email',response.data[0][0].email)
         setprofile(response.data)

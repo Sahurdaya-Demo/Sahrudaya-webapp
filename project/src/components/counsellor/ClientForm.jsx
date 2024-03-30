@@ -5,6 +5,7 @@ import axios from "axios";
 // import axios from "axios"
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { LinkApi } from "../Utils/Resource";
+import Modal from 'react-bootstrap/Modal';
 function Details() { 
 
 	// const navigate=useNavigate();
@@ -13,8 +14,11 @@ function Details() {
 	// 	e.returnValue = '';
 	// 	navigate('/counsellor',{replace:true})
 	//   });
-	
-	const[date,setdate]=useState("")
+  const toggleShowA = () => {setShowA(true)};
+  const toggleCloseA = () => {setShowA(false)};
+  const [showA, setShowA] = useState(false);
+	const[uid,setuid]=useState('');
+	const[date,setdate]=useState(new Date())
 	const[place,setplace]=useState("")
 	const[name,setname]=useState("")
 	const[Age, setage] = useState("")
@@ -128,6 +132,7 @@ function Details() {
 	
 	  const newdata =async()=>{
 		let formField= new FormData()
+    formField.append('uniqueid',uid);
     formField.append("nameofcounsellor",sessionStorage.getItem('name') )
 		formField.append("email",sessionStorage.getItem('email') )
 		formField.append('date',date)
@@ -180,24 +185,53 @@ function Details() {
     event.preventDefault();
        
 		if (form.checkValidity() === false) {
-     
+      alert('Fill Out Required Fields!!')
 		  event.stopPropagation();
 		}
+    else{
+      toggleShowA()
+    }
 	  // handleReset();
+    
 		setValidated(true);
     
 	 }
- 
-
-  //  const handleReset = () => {
+   const finduid=async()=>{
+    let formField= new FormData()
+    formField.append('uniqueid',uid);
     
-  //    setValidated(false);
-     
-  // };
+    formField.append("nameofcounsellor",sessionStorage.getItem('name') )
+		formField.append("email",sessionStorage.getItem('email') )
+		formField.append('date',date)
+    console.log(date)
+    formField.append('name',name)
+    formField.append('sessiondesc',problem)
+    
+    try{
+      await axios({
+        method: 'post',
+       //  url: 'http://127.0.0.1:8000/formsubmit/',
+       url: `${LinkApi}insertsession/`,
+      data: formField
+      }).then(response=>{
+        if(response.data.errors)
+        {
+          alert('Similar Unique ID Already Exist')
+          // e.target.form.elements.uid.value = ""
+          // console.log(uid)
+        }
+        else{
+        newdata();
+        toggleCloseA();
+        }
+      })
+     }
+   catch{}
+   }
 
 	return ( 
 		
-       
+       <>
 		<Form onSubmit={submithandler} noValidate validated={validated} ref={formRef}>
       <br />
       <div className="card" style={{ boxShadow: "10px 8px 0px rgb(42, 38, 38)" }}>
@@ -459,7 +493,7 @@ function Details() {
 			
 			<br></br>
 			<center>
-			<Button className="buttons btn btn-success" type="submit" style={{ marginRight: "20px" }} onClick={newdata}>
+			<Button className="buttons btn btn-success" type="submit" style={{ marginRight: "20px" }}>
         Submit
       </Button>
       <Button className="buttons btn btn-danger" type="reset" style={{ marginRight: "20px" }} onClick={reset}>
@@ -474,6 +508,17 @@ function Details() {
 
       
     </Form>
+    <Modal show={showA} onHide={toggleCloseA} centered>
+        <Modal.Header closeButton onClick={toggleCloseA}>
+        <strong className="me-auto">Notification</strong>
+         </Modal.Header>
+            <Modal.Body>
+                  <Form.Label>Enter an Unique ID</Form.Label>
+                  <Form.Control type="text" maxLength={100} onChange={(e) => setuid(e.target.value)} required />
+                  <Button variant='btn btn-success' className='mt-2' onClick={finduid}>Submit</Button>
+            </Modal.Body>
+      </Modal>                    
+    </>
 
 	); 
 } 

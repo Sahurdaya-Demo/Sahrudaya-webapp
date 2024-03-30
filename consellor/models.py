@@ -25,6 +25,7 @@ class counsellor(models.Model):
     outcome=models.CharField(max_length=250,default='null',null=True,blank=True)
     remarks=models.CharField(max_length=200,default='null',null=True,blank=True)
     status=models.CharField(max_length=10)
+    uniqueid = models.CharField(max_length=100,default='null')
 
 
 

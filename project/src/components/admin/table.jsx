@@ -55,6 +55,7 @@ const Tbadmin=({data=[]})=>{
   const[remarks,setremarks]=useState("")
   const[status,setstatus]=useState("")
   const[nameofcon,setnameofcon]=useState("")
+  const[uid,setuid]=useState("")
   const [dtoast,setdtoast]=useState([]);
   const tableRef = useRef(null);
     useEffect(()=>{
@@ -63,11 +64,12 @@ const Tbadmin=({data=[]})=>{
         const dataTable = $(tableRef.current).DataTable({
         data,
         columns: [
-          { title: 'Name', data: 'name' },
+          { title: 'UID', data: 'uniqueid',className:'text-start'},
+          { title: 'Name', data: 'name',className:'mt-2' },
           { title: 'Name Of Counselor', data: 'nameofcounsellor' },
           { title: 'Gender', data: 'gender' },
           { title: 'Date', data: 'date' ,className:'text-start'},
-          { title: 'Place Of Counselling', data: 'place_of_counselling' },
+          
           { title: 'Problem', data: 'problem'},
           { title: 'Status', data: 'status'},
           { title: 'age', data: 'age',visible:false},
@@ -153,6 +155,7 @@ const Tbadmin=({data=[]})=>{
       // const result=await axios.get(`http://127.0.0.1:8000/formsubmit/${id}`)
       const result=await axios.get(`${LinkApi}formsubmit/${id}`)
       // console.log(result.data)
+      setuid(result.data.uniqueid)
       setdate(result.data.date)
       setid(result.data.id)
       setname(result.data.name)
@@ -192,17 +195,19 @@ const Tbadmin=({data=[]})=>{
         }
     })
 }
-const updatecaemail=async(id)=>{
-  console.log(caemail)
+const updatecaemail=async(id,uid)=>{
+  console.log(uid)
   await axios({
       method: 'post',
       // url:`http://127.0.0.1:8000/emailchange/`,
       url:`${LinkApi}emailchange/`,
-      data:{'email':caemail,'id':id},
+      data:{'email':caemail,'id':id,'uid':uid},
     }).then(response=>{
       // console.log(response.data);
       // setValidated(true)
       // handleClose()
+      window.location.reload();
+      toggleCloseA()
     }
     )
 }
@@ -230,27 +235,24 @@ const handlescroll=()=>{
                 <table ref={tableRef} className="table table-striped display responsive" width="100%" id='counsel'>
                 <thead>
                     <tr>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Email</th>
+                    <th></th>
+                    <th className='d-flex justify-content-center'>No data</th>
+                    <th></th>
                     </tr>
+                    
                 </thead>
                 <tbody />
                 </table>
             </div>
             <Modal size='xl' id='modal' show={show} onHide={handleClose} centered>
-                        <Toast show={showA} onClose={toggleCloseA} className=' position-absolute  translate-middle-y' style={{zIndex:10000,top:`${windowHeight.current*(4.0/100)}%`,right:`${windowWidth.current*(2.3/100)}%`}}>
-                        <Toast.Header>
-                            <img
-                            src="holder.js/20x20?text=%20"
-                            className="rounded me-2"
-                            alt=""
-                            />
+                        <Modal show={showA} onHide={toggleCloseA} centered>
+                        <Modal.Header closeButton onClick={toggleCloseA}>
+                            
                             <strong className="me-auto">Notification</strong>
                             {/* <small>11 mins ago</small> */}
-                        </Toast.Header>
+                        </Modal.Header>
                         
-                        <Toast.Body>{toastdata?'Change Access':<span>It Seems Like Counselor <strong>{nameofcon}</strong> Has Been Deleted. Would You Like To Change Access</span>}
+                        <Modal.Body>{toastdata?'Change Access':<span>It Seems Like Counselor <strong>{nameofcon}</strong> Has Been Deleted. Would You Like To Change Access</span>}
                         <Form.Control as="select" onChange={(e)=>setcaemail(e.target.value)} required onClick={()=>fetchemail()}>
                             <option></option>
                             {
@@ -260,9 +262,9 @@ const handlescroll=()=>{
                             }
                             
                         </Form.Control>
-                        <Button variant='btn btn-success' className='mt-2' onClick={()=>updatecaemail(id)}>Submit</Button>
-                        </Toast.Body>
-                        </Toast> 
+                        <Button variant='btn btn-success' className='mt-2' onClick={()=>updatecaemail(id,uid)}>Submit</Button>
+                        </Modal.Body>
+                        </Modal> 
                         <Modal.Header closeButton onClick={handleClose} style={{backgroundColor:"#75E3B9",opacity:".7",border:'none'}}>
                             <Modal.Title>Edit Data</Modal.Title>
                         </Modal.Header>

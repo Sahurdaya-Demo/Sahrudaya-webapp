@@ -1,15 +1,9 @@
 
 import { useEffect ,useState} from "react";
 import LoadExternalScript from "../../LoadExternalScript";
-// import { UnloadExternalScript } from "../../UnloadExternalScript";
-import Modal from 'react-bootstrap/Modal'
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import view from "./Data";
-import axios from "axios";
 
-import { LinkApi } from "../Utils/Resource";
-// import { Link } from "react-router-dom";
+import view from "./Data";
+import DataSess from "./tableses";
 import DataTableComponent from "./table";
 function Patients()
 {
@@ -173,7 +167,7 @@ function Patients()
         <div className="card cardey mb-4 mt-2">
                             <div className="card-header">
                                 <i className="fa fa-table me-1"></i>
-                                DataTable Example
+                                Patient Info Table
                             </div>
                             <div className="card-body">
                             {/* <table id="counsel" className="table table-striped" style={{width:'100%'}}>
@@ -276,7 +270,15 @@ function Patients()
                                 <DataTableComponent data={profile[1]}/>
                            </div>
                         </div>
-                    
+                        <div className="card cardey mb-4 mt-2">
+                            <div className="card-header">
+                                <i className="fa fa-table me-1"></i>
+                                Session Info Table
+                            </div>
+                            <div className="card-body">
+                            <DataSess data={profile[2]}/>
+                            </div>
+                        </div>
                     {/* <Modal size="xl" show={show} onHide={handleClose} centered>
                         <Modal.Header closeButton onClick={handleClose} style={{backgroundColor:"#75E3B9",opacity:".7",border:'none'}}>
                           <Modal.Title>Edit Data</Modal.Title>

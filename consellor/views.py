@@ -5,6 +5,7 @@ from employee.models import employee
 from .serializers import CounsellorSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from ptsessions.models import ptsessions
 # Creatclasse your views here.
 
 class submitview(viewsets.ModelViewSet):
@@ -29,12 +30,12 @@ class emailchange(APIView):
      def post(self, request, format=None):
           email=counsellor.objects.get(id=request.data['id'])
           name=employee.objects.get(email=request.data['email'])
-          print(name.name)
+          session=ptsessions.objects.get(uniqueid=request.data['uid'])
+        #   print(name.name)
+          session.email=request.data['email']
           email.email=request.data['email']
           email.nameofcounsellor=name.name
+          session.nameofcounsellor=name.name
           email.save()
+          session.save()
           return Response({"message": "Record deleted successfully"},status=status.HTTP_200_OK)
-class demo(APIView):
-    def post(self,request):
-        print(request.data)
-        return Response({"message": "Record deleted successfully"},status=status.HTTP_200_OK)

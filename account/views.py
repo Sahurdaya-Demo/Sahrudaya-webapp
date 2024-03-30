@@ -15,6 +15,8 @@ from .models import User
 from employee.serializers import EmpSerializer
 from consellor.models import counsellor
 from consellor.serializers import CounsellorSerializer
+from ptsessions.models import ptsessions
+from ptsessions.serializers import SessionSerializer
 import secrets
 import string
 from account.utils import Util
@@ -99,8 +101,10 @@ class UserProfileView(APIView):
     serialized=EmpSerializer(jj,many=True)
     pp=counsellor.objects.filter(email=request.user)
     serial=CounsellorSerializer(pp,many=True)
-    serializer = UserProfileSerializer(request.user)
-    return Response([serialized.data,serial.data], status=status.HTTP_200_OK)
+    xx=ptsessions.objects.filter(email=request.user)
+    serialzer=SessionSerializer(xx,many=True)
+    # serializer = UserProfileSerializer(request.user)
+    return Response([serialized.data,serial.data,serialzer.data], status=status.HTTP_200_OK)
 class UserLogout(APIView):
    authentication_classes = ()
   #  permission_classes = [IsAuthenticated]

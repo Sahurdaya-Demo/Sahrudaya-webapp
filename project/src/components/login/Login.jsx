@@ -96,7 +96,7 @@ function Login(){
                     
                     <img src={portr}  />
         </Carousel> */}
-		<img  src='../../../logo.jpg' alt='logo' sty/>
+		<img  src='../../../logo.jpg' alt='logo'/>
 				</div>
          
         

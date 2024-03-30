@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import $ from 'jquery';
 import 'datatables.net';
-import '../counsellor/css/datatables.css'
-import '../counsellor/css/datatables.min.css'
+// import '../counsellor/css/datatables.css'
+// import '../counsellor/css/datatables.min.css'
 import jszip from 'jszip';
 // import pdfmake from 'pdfmake';
 import 'datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css';
@@ -59,6 +59,7 @@ const DataTableComponent = ({ data=[] }) => {
       const dataTable = $(tableRef.current).DataTable({
         data,
         columns: [
+          {title:'UID',data:'uniqueid',className:'text-start'},
           { title: 'Name', data: 'name' },
           { title: 'Gender', data: 'gender' },
           { title: 'Date', data: 'date' ,className:'text-start'},
