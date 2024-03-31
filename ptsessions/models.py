@@ -6,5 +6,5 @@ class ptsessions(models.Model):
     name = models.CharField(max_length=100)
     nameofcounsellor=models.CharField(max_length=100)
     sessiondesc=models.CharField(max_length=100)
-    uniqueid=models.CharField(max_length=100,unique=True)
+    uniqueid=models.CharField(max_length=100)
     email=models.CharField(max_length=50,default='null')

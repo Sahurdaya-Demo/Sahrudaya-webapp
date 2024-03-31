@@ -1,6 +1,10 @@
 import LoadExternalScript from '../../LoadExternalScript';
 import jszip from 'jszip';
 import React, { useEffect, useRef, useState } from 'react';
+import { Row,Col} from "react-bootstrap";
+import Modal from 'react-bootstrap/Modal'
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import $ from 'jquery';
 import 'datatables.net';
 // import pdfmake from 'pdfmake';
@@ -9,10 +13,21 @@ import 'datatables.net-buttons-bs5';
 import 'datatables.net-buttons/js/buttons.colVis.mjs';
 import 'datatables.net-buttons/js/buttons.html5.mjs';
 import 'datatables.net-buttons/js/buttons.print.mjs';
+import axios from 'axios';
+import { LinkApi } from '../Utils/Resource';
 // import view from './Data';
 import Patients from './Patients';
 import 'datatables.net-responsive-bs5';
 const DataSess = ({ data=[] }) => {
+    const handleShow = () => setShow(true);
+    const handleClose = () => {setShow(false);}
+    const [show, setShow] = useState(false);
+    const[uid,setuid]=useState('')
+    const[id,setid]=useState('')
+    const[name,setname]=useState('')
+    const [date,setdate]=useState(new Date())
+    const [sessdesc,setsessdec]=useState('')
+    
     window.JSZip = jszip;
     const tableRef = useRef(null);
     useEffect(() => {
@@ -34,8 +49,8 @@ const DataSess = ({ data=[] }) => {
             render:function(data, type, row) {
                 return `
                 <div>
-                  <button class="btn btn-primary edit-btn">Edit</button>
-                  <button class="btn btn-danger  delete-btn">Delete</button>
+                  <button class="btn btn-success btn-sm edit-btn">Edit</button>
+                  <button class="btn btn-danger btn-sm  delete-btn">Delete</button>
                 </div>
               `;
             }
@@ -49,12 +64,19 @@ const DataSess = ({ data=[] }) => {
         // Add event listeners to the buttons after DataTable initialization
         $(tableRef.current).on('click', '.edit-btn', function () {
           const rowData = dataTable.row($(this).closest('tr')).data();
-        //   editRow(rowData.id);
+          setid(rowData.id)
+          setdate(rowData.date)
+          setname(rowData.name)
+          setsessdec(rowData.sessiondesc)
+          setuid(rowData.uniqueid)
+          handleShow()
+          // editRow(rowData.id);
+          
         });
 
         $(tableRef.current).on('click', '.delete-btn', function () {
           const rowData = dataTable.row($(this).closest('tr')).data();
-        //   delrecord(rowData.id);
+          delrecord(rowData.id);
         });
         const searchdiv = $(this).closest('#counsel_wrapper').find('.dt-search');
         const searchInput = $(this).closest('#counsel_wrapper').find('input[type="search"]');
@@ -68,6 +90,37 @@ const DataSess = ({ data=[] }) => {
         $(tableRef.current).DataTable().destroy(true);
       };
     }, [data]);
+    // const editRow=async(id)=>{
+    //   try{
+    //     await axios({
+    //         method: 'get',
+    //         url:`${LinkApi}crudsession/${id}`,
+    //       }).then(response=>{
+    //         console.log(id)
+    //         handleShow()
+    //       }
+    //       )}
+    //       catch{}
+    // }
+      // const getformdetails=async(id)=>{
+      //   // const result=await axios.get(`${LinkApi}crudsession/${id}`)
+      //   // console.log(result)
+        
+      // }
+      const delrecord=async(id)=>{
+        if (window.confirm('Are you sure you wish to delete this item?')){
+        try{
+        await axios({
+            method: 'delete',
+            url:`${LinkApi}crudsession/${id}/`,
+          }).then(response=>{
+            window.location.reload();
+          }
+          )}
+          catch{}
+        }
+      
+      }
     return (
         <>
         {/* <link rel='stylesheet'type='text/css' href='https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-2.0.2/b-3.0.1/b-html5-3.0.1/b-print-3.0.1/datatables.min.css'></link> */}
@@ -83,8 +136,61 @@ const DataSess = ({ data=[] }) => {
           <tbody />
         </table>
       </div>
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton onClick={handleClose} style={{backgroundColor:"#75E3B9",opacity:".7",border:'none'}}>
+            <Modal.Title>Edit Data</Modal.Title>
+        </Modal.Header>
+            <Modal.Body className='p-2'style={{backgroundColor:"#75E3B9",opacity:".7"}}>
+              <Form.Group controlId="date">
+                <Form.Label>Date</Form.Label>
+                  <Form.Control
+                    type="date"
+                    placeholder=""
+                    value={date||''}
+                    onChange={(e) => setdate(e.target.value)}
+                    disabled
+                    autoFocus
+                    />                              
+              </Form.Group>    
+              <Form.Group controlId="uid">
+                <Form.Label>UID</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder=""
+                    value={uid||''}
+                    onChange={(e) => setuid(e.target.value)}
+                    disabled
+                    autoFocus
+                    />                              
+              </Form.Group>       
+              <Form.Group controlId="name">
+                <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder=""
+                    value={name||''}
+                    onChange={(e) => setname(e.target.value)}
+                    disabled
+                    autoFocus
+                    />                              
+              </Form.Group> 
+              <Form.Group controlId="sessdesc">
+                <Form.Label>Session Description</Form.Label>
+                  <Form.Control
+                     as={"textarea"}
+                     rows={3}  
+                     maxLength={200} 
+                    value={sessdesc||''}
+                    onChange={(e) => setsessdec(e.target.value)}
+                    disabled
+                    autoFocus
+                    />                              
+              </Form.Group>                                                              
+              </Modal.Body>             
+      </Modal>
       </>
     )
 
 }
+
 export default DataSess;

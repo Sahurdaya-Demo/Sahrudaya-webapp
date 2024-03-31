@@ -196,7 +196,7 @@ function Details() {
 		setValidated(true);
     
 	 }
-   const finduid=async()=>{
+   const sessdata=async()=>{
     let formField= new FormData()
     formField.append('uniqueid',uid);
     
@@ -207,7 +207,7 @@ function Details() {
     formField.append('name',name)
     formField.append('sessiondesc',problem)
     
-    try{
+    //try{
       await axios({
         method: 'post',
        //  url: 'http://127.0.0.1:8000/formsubmit/',
@@ -225,8 +225,8 @@ function Details() {
         toggleCloseA();
         }
       })
-     }
-   catch{}
+     //}
+   //catch{}
    }
 
 	return ( 
@@ -515,7 +515,7 @@ function Details() {
             <Modal.Body>
                   <Form.Label>Enter an Unique ID</Form.Label>
                   <Form.Control type="text" maxLength={100} onChange={(e) => setuid(e.target.value)} required />
-                  <Button variant='btn btn-success' className='mt-2' onClick={finduid}>Submit</Button>
+                  <Button variant='btn btn-success' className='mt-2' onClick={sessdata}>Submit</Button>
             </Modal.Body>
       </Modal>                    
     </>

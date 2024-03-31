@@ -27,6 +27,7 @@ const DataTableComponent = ({ data=[] }) => {
     const handleClose = () => {setShow(false);setDisableButton(false);}
     const [show, setShow] = useState(false);
     const [validated, setValidated] = useState(true);
+    const[uid,setuid]=useState("")
     const[id,setid]=useState("")
     const[date,setdate]=useState("")
     const[place,setplace]=useState("")
@@ -88,8 +89,8 @@ const DataTableComponent = ({ data=[] }) => {
             render:function(data, type, row) {
                 return `
                 <div>
-                  <button class="btn btn-primary edit-btn">Edit</button>
-                  <button class="btn btn-danger  delete-btn">Delete</button>
+                  <button class="btn btn-success btn-sm edit-btn">Edit</button>
+                  <button class="btn btn-danger btn-sm  delete-btn">Delete</button>
                 </div>
               `;
             }
@@ -108,7 +109,7 @@ const DataTableComponent = ({ data=[] }) => {
 
         $(tableRef.current).on('click', '.delete-btn', function () {
           const rowData = dataTable.row($(this).closest('tr')).data();
-          delrecord(rowData.id);
+          delrecord(rowData.id,rowData.uniqueid);
         });
         const searchdiv = $(this).closest('#counsel_wrapper').find('.dt-search');
         const searchInput = $(this).closest('#counsel_wrapper').find('input[type="search"]');
@@ -127,6 +128,7 @@ const DataTableComponent = ({ data=[] }) => {
       // const result=await axios.get(`http://127.0.0.1:8000/formsubmit/${id}`)
       const result=await axios.get(`${LinkApi}formsubmit/${id}`)
       console.log(result.data)
+      setuid(result.data.uniqueid)
       setdate(result.data.date)
       setid(result.data.id)
       setname(result.data.name)
@@ -173,16 +175,18 @@ const DataTableComponent = ({ data=[] }) => {
 		// setValidated(false);
     
 	 }
-    const delrecord=async(id)=>{
+    const delrecord=async(id,uid)=>{
+      // console.log(uid)
       if (window.confirm('Are you sure you wish to delete this item?')){
       try{
       await axios({
           method: 'delete',
           // url:`http://127.0.0.1:8000/formsubmit/${id}/`,
+          data:{'uid':uid},
           url:`${LinkApi}formsubmit/${id}/`,
         }).then(response=>{
-          console.log(response.data);
-          alert('Record Deleted Successfully!!')
+          // console.log(response.data);
+          window.location.reload();
         }
         )}
         catch{}
@@ -215,6 +219,7 @@ const DataTableComponent = ({ data=[] }) => {
       formField.append('outcome',outcome)
       formField.append('remarks',remarks)
       formField.append('status',status)
+      formField.append('uniqueid',uid)
           try{
       await axios({
         method: 'PUT',

@@ -25,13 +25,13 @@ class crudsession(viewsets.ModelViewSet):
 
 class insertsession(APIView):
    def post(self, request, format=None):
-           try:
-            print(request.data['uniqueid'])
-            serializer = SessionSerializer(data=request.data)
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            print('ok')
-            return Response({'message': 'record added'}, status=status.HTTP_200_OK)
-           except:
-            print('not ok')
-            return Response({'errors': 'unique id needed'}, status=status.HTTP_200_OK)
+            if ptsessions.objects.filter(uniqueid=request.data['uniqueid']).exists():
+                  return Response({'errors':'unique id required'},status=status.HTTP_200_OK)
+            else:
+                
+                serializer = SessionSerializer(data=request.data)
+                serializer.is_valid(raise_exception=True)
+                serializer.save()
+                print('ok')
+                return Response({'message': 'record added'}, status=status.HTTP_200_OK)
+           
