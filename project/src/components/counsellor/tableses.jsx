@@ -27,7 +27,7 @@ const DataSess = ({ data=[] }) => {
     const[name,setname]=useState('')
     const [date,setdate]=useState(new Date())
     const [sessdesc,setsessdec]=useState('')
-    
+    const [disableButton,setDisableButton] = useState(false)
     window.JSZip = jszip;
     const tableRef = useRef(null);
     useEffect(() => {
@@ -107,6 +107,9 @@ const DataSess = ({ data=[] }) => {
       //   // console.log(result)
         
       // }
+      const handleeditClick = () => {
+        setDisableButton(!disableButton)
+    };
       const delrecord=async(id)=>{
         if (window.confirm('Are you sure you wish to delete this item?')){
         try{
@@ -141,17 +144,7 @@ const DataSess = ({ data=[] }) => {
             <Modal.Title>Edit Data</Modal.Title>
         </Modal.Header>
             <Modal.Body className='p-2'style={{backgroundColor:"#75E3B9",opacity:".7"}}>
-              <Form.Group controlId="date">
-                <Form.Label>Date</Form.Label>
-                  <Form.Control
-                    type="date"
-                    placeholder=""
-                    value={date||''}
-                    onChange={(e) => setdate(e.target.value)}
-                    disabled
-                    autoFocus
-                    />                              
-              </Form.Group>    
+                 
               <Form.Group controlId="uid">
                 <Form.Label>UID</Form.Label>
                   <Form.Control
@@ -174,6 +167,17 @@ const DataSess = ({ data=[] }) => {
                     autoFocus
                     />                              
               </Form.Group> 
+              <Form.Group controlId="date">
+                <Form.Label>Date</Form.Label>
+                  <Form.Control
+                    type="date"
+                    placeholder=""
+                    value={date||''}
+                    onChange={(e) => setdate(e.target.value)}
+                    disabled={!disableButton}
+                    autoFocus
+                    />                              
+              </Form.Group> 
               <Form.Group controlId="sessdesc">
                 <Form.Label>Session Description</Form.Label>
                   <Form.Control
@@ -182,10 +186,15 @@ const DataSess = ({ data=[] }) => {
                      maxLength={200} 
                     value={sessdesc||''}
                     onChange={(e) => setsessdec(e.target.value)}
-                    disabled
+                    disabled={!disableButton}
                     autoFocus
                     />                              
-              </Form.Group>                                                              
+              </Form.Group>  
+              <Form.Group className="d-flex justify-content-end align-content-end">
+                  <Button variant="btn btn-warning py-1 m-1 "  onClick={handleeditClick} disabled={disableButton} style={{color:'white'}}> Edit</Button>
+                  {/* <Button variant="btn btn-success py-1 m-1" type="submit" onClick={()=>{if(validated===false){handlesaveClick()};update(id);}} disabled={!disableButton}>Save</Button> */}
+                  <Button variant="btn btn-danger py-1 m-1" onClick={handleClose}>Close</Button>
+               </Form.Group>                                                            
               </Modal.Body>             
       </Modal>
       </>
