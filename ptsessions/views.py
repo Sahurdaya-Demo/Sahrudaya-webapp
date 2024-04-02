@@ -32,6 +32,17 @@ class insertsession(APIView):
                 serializer = SessionSerializer(data=request.data)
                 serializer.is_valid(raise_exception=True)
                 serializer.save()
-                print('ok')
                 return Response({'message': 'record added'}, status=status.HTTP_200_OK)
+
+class getName(APIView):
+    def post(self, request, format=None):
+         try:
+            print(request.data['uid'])
+            name=ptsessions.objects.filter(uniqueid=request.data['uid'])
+            for item in name:
+             names=item.name
+            return Response({'name': str(names)}, status=status.HTTP_200_OK)
+         except:
+            return Response({'errors': 'invalid id'}, status=status.HTTP_200_OK)
+      
            

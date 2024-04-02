@@ -207,7 +207,7 @@ function Details() {
     formField.append('name',name)
     formField.append('sessiondesc',problem)
     
-    //try{
+    try{
       await axios({
         method: 'post',
        //  url: 'http://127.0.0.1:8000/formsubmit/',
@@ -225,8 +225,8 @@ function Details() {
         toggleCloseA();
         }
       })
-     //}
-   //catch{}
+     }
+   catch{}
    }
 
 	return ( 

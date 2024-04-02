@@ -20,7 +20,7 @@ import Patients from './Patients';
 import 'datatables.net-responsive-bs5';
 const DataSess = ({ data=[] }) => {
     const handleShow = () => setShow(true);
-    const handleClose = () => {setShow(false);}
+    const handleClose = () => {setShow(false);setDisableButton(false);}
     const [show, setShow] = useState(false);
     const[uid,setuid]=useState('')
     const[id,setid]=useState('')
@@ -110,6 +110,34 @@ const DataSess = ({ data=[] }) => {
       const handleeditClick = () => {
         setDisableButton(!disableButton)
     };
+    const update=async()=>{
+      if(date!==''&&sessdesc!=='')
+      {
+      let formField = new FormData()
+      formField.append("nameofcounsellor",sessionStorage.getItem('name') )
+      formField.append("email",sessionStorage.getItem('email') )
+      formField.append('date',date)
+      formField.append('name',name)
+      formField.append('uniqueid',uid)
+      formField.append('sessiondesc',sessdesc)
+      try{
+        await axios({
+          method: 'PUT',
+        //   url:`http://127.0.0.1:8000/formsubmit/${id}/`,
+          url:`${LinkApi}crudsession/${id}/`,
+          data:formField,
+        }).then(response=>{
+          alert('Session Updated Succesfully')
+          window.location.reload();
+        }
+        )
+       }
+      catch{}
+      }
+      else{
+        alert('Date and Session Description Field May Be Empty')
+      }
+     }
       const delrecord=async(id)=>{
         if (window.confirm('Are you sure you wish to delete this item?')){
         try{
@@ -192,7 +220,7 @@ const DataSess = ({ data=[] }) => {
               </Form.Group>  
               <Form.Group className="d-flex justify-content-end align-content-end">
                   <Button variant="btn btn-warning py-1 m-1 "  onClick={handleeditClick} disabled={disableButton} style={{color:'white'}}> Edit</Button>
-                  {/* <Button variant="btn btn-success py-1 m-1" type="submit" onClick={()=>{if(validated===false){handlesaveClick()};update(id);}} disabled={!disableButton}>Save</Button> */}
+                  <Button variant="btn btn-success py-1 m-1"  disabled={!disableButton} onClick={()=>update()}>Save</Button>
                   <Button variant="btn btn-danger py-1 m-1" onClick={handleClose}>Close</Button>
                </Form.Group>                                                            
               </Modal.Body>             

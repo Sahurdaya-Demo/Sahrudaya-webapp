@@ -3,7 +3,7 @@ from django.urls import path, include
 from account.views import SendPasswordResetEmailView, UserChangePasswordView, UserLoginView, UserProfileView, UserRegistrationView, UserPasswordResetView,UserLogout,SendRegisterEmail,EmailSearch,DisableUser
 from django.conf import settings
 from employee.views import EmpView,ValidPost,ValidGet,GetCount
-from ptsessions.views import insertsession,crudsession
+from ptsessions.views import insertsession,crudsession,getName
 from consellor.views import submitview,emailchange
 from django.conf.urls.static import static
 from rest_framework import routers
@@ -34,4 +34,5 @@ urlpatterns = [
     path('disable/',DisableUser.as_view(),name='disableuser'),
     path('insertsession/',insertsession.as_view(),name='insertsession'),
     path('crudsession/',include(route3.urls)),
+    path('getName/',getName.as_view(),name='insertsession')
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

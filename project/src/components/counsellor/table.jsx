@@ -127,7 +127,7 @@ const DataTableComponent = ({ data=[] }) => {
       setValidated(false)
       // const result=await axios.get(`http://127.0.0.1:8000/formsubmit/${id}`)
       const result=await axios.get(`${LinkApi}formsubmit/${id}`)
-      console.log(result.data)
+      // console.log(result.data)
       setuid(result.data.uniqueid)
       setdate(result.data.date)
       setid(result.data.id)
