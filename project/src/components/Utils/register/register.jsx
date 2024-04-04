@@ -63,7 +63,7 @@ function Register({secure})
 			formField.append('phone',phone)
 			formField.append('password',password)
 			formField.append('password2',crpassword)
-			formField.append('is_active',1)
+			// formField.append('is_active',1)
 			await axios({
 				method:'post',
 				// url: `http://127.0.0.1:8000/validpost`,
