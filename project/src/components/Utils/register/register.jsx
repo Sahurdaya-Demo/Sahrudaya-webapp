@@ -73,7 +73,7 @@ function Register({secure})
 				  'Content-type': 'application/json',
 				}
 			  })
-			// try{
+			try{
 			  await axios({
 				method: 'post',
 				// url:'http://127.0.0.1:8000/register/',
@@ -92,10 +92,10 @@ function Register({secure})
 						window.close()
 					}
 				})
-			 // }
-			// catch{
-			//    alert('Server Down!! Contact Admin')
-			//  }
+			 }
+			catch{
+			   alert('Server Down!! Contact Admin')
+			 }
 			}
 			else{
 				alert('Password and Confirm Password Not Matching')
