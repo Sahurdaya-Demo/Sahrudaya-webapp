@@ -50,7 +50,7 @@ class UserRegistrationView(APIView):
       token = get_tokens_for_user(user)
       return Response({'token':token, 'msg':'Registration Successful'}, status=status.HTTP_201_CREATED)
     except:
-      return Response({'errors': 'same email'}, status=status.HTTP_400_BAD_REQUEST)
+      return Response({'errors': 'same email'}, status=status.HTTP_200_OK)
 
 class SendRegisterEmail(APIView):
   # renderer_classes = [UserRenderer]
