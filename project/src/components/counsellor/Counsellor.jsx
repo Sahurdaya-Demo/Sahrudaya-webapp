@@ -74,6 +74,7 @@ function Counsellor() {
       formField.append('age',age)
       formField.append('qualification',qualification)
       formField.append('phone',phone)
+      formField.append('is_active',1)
     await axios({
       method: 'PUT',
       // url:`http://127.0.0.1:8000/api/${id}/`,
