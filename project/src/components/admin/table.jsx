@@ -103,28 +103,25 @@ const Tbadmin=({data=[]})=>{
             }
           },
         ],
+        // footer: true,
         responsive:true,
         dom: 'Bfrtip', // Include buttons in the DOM
         pageLength: 5,
         buttons: ['csv', 'excel', 'print'],
         initComplete: function () {
             this.api()
-            .columns()
+            .columns(':not(:last-child)')
             .every(function () {
                 let column = this;
-                let title = column.footer().textContent;
- 
-                // Create input element
-                let input = document.createElement('input');
-                input.placeholder = title;
-                column.footer().replaceChildren(input);
- 
-                // Event listener for user input
-                input.addEventListener('keyup', () => {
-                    if (column.search() !== this.value) {
-                        column.search(input.value).draw();
-                    }
-                });
+                let title = column.header().textContent.trim(); // Get column title
+                let footer = $('<input type="text" placeholder="'+ title +'" />')
+                    .appendTo($(column.footer()).empty()) // Clear footer content and append input
+                    .on('keyup change', function () {
+                        if (column.search() !== this.value) {
+                            column.search(this.value).draw();
+                        }
+                    });
+                    footer.addClass('form-control form-control-sm');
             });
 
           $(tableRef.current).on('click', '.edit-btn', function () {
@@ -132,6 +129,7 @@ const Tbadmin=({data=[]})=>{
             // console.log(rowData.email)
             editRow(rowData.id,rowData.email);
           });
+          
   
           $(tableRef.current).on('click', '.delete-btn', function () {
             const rowData = dataTable.row($(this).closest('tr')).data();
@@ -146,6 +144,7 @@ const Tbadmin=({data=[]})=>{
             searchbutton.addClass('my-lg-1')
         },
         });
+        
         return () => {
             $(tableRef.current).DataTable().destroy(true);
           };
@@ -263,29 +262,29 @@ const handlescroll=()=>{
                 <tbody />
                 <tfoot>
                     <tr>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
-                        <th>hello</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </tfoot>
                 </table>
