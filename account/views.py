@@ -57,7 +57,7 @@ class SendRegisterEmail(APIView):
   def post(self, request, format=None):
     user=request.data['email']
     secure_str = ''.join((secrets.choice(string.ascii_letters) for i in range(20)))
-    link = f'http://localhost:3000/registration/{secure_str}'
+    link = f'https://sahrudaya-webapp.vercel.app/registration/{secure_str}'
     body = 'Click Following Link to Register '+link
     data = {
         'subject':'Registration',
@@ -131,7 +131,7 @@ class SendPasswordResetEmailView(APIView):
   def post(self, request, format=None):
     try:
       serializer = SendPasswordResetEmailSerializer(data=request.data)
-      print(request.data)
+      # print(request.data)
       serializer.is_valid(raise_exception=True)
       return Response({'msg':'Password Reset link send. Please check your Email'}, status=status.HTTP_200_OK)
     except:

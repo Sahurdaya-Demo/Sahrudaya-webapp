@@ -2,18 +2,18 @@ import React from 'react'
 import { useEffect,useState} from 'react';
 import {  useNavigate,useLocation, Outlet } from 'react-router-dom';
 import axios from 'axios';
+import {Spinner } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Image } from 'react-bootstrap';
-import { Card, CardBody } from "reactstrap";
 import { Link } from 'react-router-dom';
 import { LinkApi } from '../Utils/Resource';
 import { UnloadExternalScript } from '../../UnloadExternalScript';
 function Admin() {
     const navigate=useNavigate();
-    const location = useLocation();
     const [show, setShow] = useState(false);
+    const[loading,setLoading]=useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [mview, setview] = useState(false);
@@ -62,6 +62,7 @@ function Admin() {
     )
   }
   const changepassword=async()=>{
+    setLoading(true)
     if(password===crpassword){
     let formField = new FormData()
     formField.append('password',password)
@@ -76,6 +77,7 @@ function Admin() {
     url:'http://127.0.0.1:8000/changepassword/',
     data: formField,   
     }).then(response=>{
+        setLoading(false);
         alert(response.data.msg)
         handleClose()
     })
@@ -254,6 +256,7 @@ function Admin() {
             Close
           </Button>
           <Button  className='btn-primary' onClick={changepassword} variant='primary'>
+            {loading ?  <Spinner size='sm'/>:null}
             Submit
           </Button>
         </Modal.Footer>

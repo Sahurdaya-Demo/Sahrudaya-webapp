@@ -101,6 +101,20 @@ const DataTableComponent = ({ data=[] }) => {
         pageLength: 5,
       buttons: ['csv', 'excel', 'print'],
       initComplete: function () {
+        this.api()
+        .columns(':not(:last-child)')
+        .every(function () {
+            let column = this;
+            let title = column.header().textContent.trim(); // Get column title
+            let footer = $('<input type="text" placeholder="'+ title +'" />')
+                .appendTo($(column.footer()).empty()) // Clear footer content and append input
+                .on('keyup change', function () {
+                    if (column.search() !== this.value) {
+                        column.search(this.value).draw();
+                    }
+                });
+                footer.addClass('form-control form-control-sm');
+        });
         // Add event listeners to the buttons after DataTable initialization
         $(tableRef.current).on('click', '.edit-btn', function () {
           const rowData = dataTable.row($(this).closest('tr')).data();
@@ -249,13 +263,40 @@ const DataTableComponent = ({ data=[] }) => {
       <div>
         <table ref={tableRef} className="table table-striped display responsive" width="100%" id='counsel'>
           <thead>
-            <tr>
-              <th>Name</th>
-              <th>Age</th>
-              <th>Email</th>
-            </tr>
+          <tr>
+                    <th></th>
+                    <th>No data</th>
+                    <th></th>
+          </tr>
           </thead>
           <tbody />
+                  <tfoot>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </tfoot>
         </table>
       </div>
       <Modal size="xl" show={show} onHide={handleClose} centered>

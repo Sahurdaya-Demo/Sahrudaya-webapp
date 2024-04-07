@@ -254,7 +254,7 @@ const handlescroll=()=>{
                 <thead>
                     <tr>
                     <th></th>
-                    <th className='d-flex justify-content-center'>No data</th>
+                    <th>No data</th>
                     <th></th>
                     </tr>
                     

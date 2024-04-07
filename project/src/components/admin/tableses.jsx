@@ -122,11 +122,11 @@ const AdataSess = ({ data=[] }) => {
       <div>
         <table ref={tableRef} className="table table-striped display responsive" width="100%" id='counsel'>
           <thead>
-            <tr>
-              <th>Name</th>
-              <th>Age</th>
-              <th>Email</th>
-            </tr>
+          <tr>
+                    <th></th>
+                    <th className='d-flex justify-content-center'>No data</th>
+                    <th></th>
+         </tr>
           </thead>
           <tbody />
           <tfoot>

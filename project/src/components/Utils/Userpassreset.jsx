@@ -11,6 +11,8 @@ function Userpassreset({id,token,secure}){
     const[crpassword,setcrpassword]=useState('')
     // const { id, token,secure } = useParams()
     const Reset=async()=>{
+    if(password!==''||crpassword!==''){
+      if(password==crpassword){
     let formField = new FormData()
     formField.append('password',password)
     formField.append('password2',crpassword)
@@ -40,7 +42,13 @@ function Userpassreset({id,token,secure}){
        else
         alert(`Password and Confirm Password Doesn't match`)
       })
-      
+      }
+      else
+        alert('Password And Confirm Password Dont Match!!')
+    }
+    else{
+      alert('Password Fields Are Empty!!')
+    }
 
     }
     const handlesubmit=(e)=>{
@@ -76,7 +84,7 @@ function Userpassreset({id,token,secure}){
     <Form.Control style={{ height: '50px' }} className="wrap-input" type="password" placeholder="Confirm New Password" onChange={(e) => setcrpassword(e.target.value)} value={crpassword}/>
   </div>
 </Form.Group>
-        <Button  variant="primary" type="submit" onClick={Reset}>
+        <Button  variant="primary" type="submit" onClick={()=>Reset()}>
           Submit
         </Button>
         </div>

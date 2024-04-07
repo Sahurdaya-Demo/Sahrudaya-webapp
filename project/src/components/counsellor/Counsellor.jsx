@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link, Outlet, useNavigate,useLocation } from 'react-router-dom';
+import { Link, Outlet, useNavigate} from 'react-router-dom';
 import { useEffect,useState} from 'react';
 import { Button,Image,Form} from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal'
-import LoadExternalScript from '../../LoadExternalScript';
+import {Spinner } from 'react-bootstrap';
 import axios from 'axios';
 import { UnloadExternalScript } from '../../UnloadExternalScript';
 import { LinkApi } from '../Utils/Resource';
@@ -11,7 +11,7 @@ function Counsellor() {
   let profilejson=[]
   let interval;
     const navigate=useNavigate();
-    const location = useLocation();
+    const[loading,setLoading]=useState(false);
     const [show, setShow] = useState(false);
     const handleClose = () => {setShow(false);setDisableButton(false)};
     const handleShow = () => setShow(true);
@@ -79,6 +79,7 @@ function Counsellor() {
 
   }
   const changepassword=async()=>{
+    setLoading(true)
     if(password===crpassword){
     let formField = new FormData()
     formField.append('password',password)
@@ -93,6 +94,7 @@ function Counsellor() {
     url:`${LinkApi}changepassword/`,
     data: formField,   
     }).then(response=>{
+        setLoading(false);
         alert(response.data.msg)
         handleviewClose()
     })
@@ -299,6 +301,7 @@ const handlesaveClick = () => {
             Close
           </Button>
           <Button  className='btn-primary' onClick={changepassword} variant='primary'>
+          {loading ?  <Spinner size='sm'/>:null}
             Submit
           </Button>
         </Modal.Footer>
