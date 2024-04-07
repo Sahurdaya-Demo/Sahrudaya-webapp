@@ -64,14 +64,13 @@ const Tbadmin=({data=[]})=>{
         const dataTable = $(tableRef.current).DataTable({
         data,
         columns: [
-          { title: 'UID', data: 'uniqueid',className:'text-start'},
-          { title: 'Name', data: 'name',className:'mt-2' },
-          { title: 'Name Of Counselor', data: 'nameofcounsellor' },
-          { title: 'Gender', data: 'gender' },
-          { title: 'Date', data: 'date' ,className:'text-start'},
-          
-          { title: 'Problem', data: 'problem'},
-          { title: 'Status', data: 'status'},
+          { title: 'UID', data: 'uniqueid',className:'text-start all'},
+          { title: 'Name', data: 'name',className:'mt-4 all' },
+          { title: 'Name Of Counselor', data: 'nameofcounsellor',className:'all' },
+          { title: 'Gender', data: 'gender',className:'all' },
+          { title: 'Date', data: 'date' ,className:'text-start all'},
+          { title: 'Status', data: 'status',className:'all'},
+          { title: 'Problem', data: 'problem',className:'all'},
           { title: 'age', data: 'age',visible:false},
           { title: 'Financial Status', data: 'finacial_status',visible:false},
           { title: 'Marital Status', data: 'marital_status',visible:false},
@@ -92,6 +91,8 @@ const Tbadmin=({data=[]})=>{
             title: 'Actions',
             data: null,
             sortable:false,
+            className:'all',
+            
             render:function(data, type, row) {
                 return `
                 <div>
@@ -107,6 +108,24 @@ const Tbadmin=({data=[]})=>{
         pageLength: 5,
         buttons: ['csv', 'excel', 'print'],
         initComplete: function () {
+            this.api()
+            .columns()
+            .every(function () {
+                let column = this;
+                let title = column.footer().textContent;
+ 
+                // Create input element
+                let input = document.createElement('input');
+                input.placeholder = title;
+                column.footer().replaceChildren(input);
+ 
+                // Event listener for user input
+                input.addEventListener('keyup', () => {
+                    if (column.search() !== this.value) {
+                        column.search(input.value).draw();
+                    }
+                });
+            });
 
           $(tableRef.current).on('click', '.edit-btn', function () {
             const rowData = dataTable.row($(this).closest('tr')).data();
@@ -242,6 +261,33 @@ const handlescroll=()=>{
                     
                 </thead>
                 <tbody />
+                <tfoot>
+                    <tr>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                        <th>hello</th>
+                    </tr>
+                </tfoot>
                 </table>
             </div>
             <Modal size='xl' id='modal' show={show} onHide={handleClose} centered>

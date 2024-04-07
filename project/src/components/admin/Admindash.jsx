@@ -27,9 +27,9 @@ function Admindash()
     const[Manappuram,setManappuram]=useState('');
     const[Pothy,setPothy]=useState('');
     const[Kakkand,setKakkand]=useState('');
-    const [show, setShow] = useState(false);
-    const [showA, setShowA] = useState(false);
-    const[toastdata,settoastdata]=useState(false)
+    // const [show, setShow] = useState(false);
+    // const [showA, setShowA] = useState(false);
+    // const[toastdata,settoastdata]=useState(false)
     // const handleShow = () => setShow(true);
     // const handleClose = () => {setShow(false);toggleCloseA();settoastdata(false)};
     // const toggleShowA = () => {setShowA(true)};
@@ -59,7 +59,7 @@ function Admindash()
     // const[remarks,setremarks]=useState("")
     // const[status,setstatus]=useState("")
     // const[nameofcon,setnameofcon]=useState("")
-    const[data,setData]=useState([])
+    // const[data,setData]=useState([])
     const [pending,setpending]=useState([]);
     const [completed,setcompleted]=useState([]);
     const [overall, setoverall] = useState([]);
@@ -69,10 +69,10 @@ function Admindash()
     // const [dtoast,setdtoast]=useState([]);
     const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
     const [selectYear, setSelectYear] = useState(new Date().getFullYear());
-    useEffect(() => {
-        table();
-        LoadExternalScript(['https://code.jquery.com/jquery-3.7.0.js','https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js','https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js','https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js','https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js','https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js']);
-        }, []); 
+    // useEffect(() => {
+    //     table();
+    //     LoadExternalScript(['https://code.jquery.com/jquery-3.7.0.js','https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js','https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js','https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js','https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js','https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js']);
+    //     }, []); 
         // useEffect(()=>{
         //    setInterval(()=>{
         //     table();
@@ -137,12 +137,12 @@ function Admindash()
             setoverall(overallCounts);
             
         };
-        const table=async()=>{
-            // const response = await fetch('http://127.0.0.1:8000/formsubmit/');
-            const response = await fetch(`${LinkApi}formsubmit/`);
-            const jsontb = await response.json();
-            setData(jsontb)
-        }
+        // const table=async()=>{
+        //     // const response = await fetch('http://127.0.0.1:8000/formsubmit/');
+        //     const response = await fetch(`${LinkApi}formsubmit/`);
+        //     const jsontb = await response.json();
+        //     setData(jsontb)
+        // }
     // useEffect(()=>{
     //     LoadExternalScript(['https://code.jquery.com/jquery-3.7.0.js','https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js','https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js','https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js','https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js','https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js','adminjs/tablescript.js']);
     //     new PureCounter();
@@ -542,114 +542,15 @@ function Admindash()
                                     </div>
                                     
                         </div> 
-                        <div className="card cardey mb-4">
-                        <div className="card-header">
-                                <i className="fa fa-table me-1"></i>
-                                DataTable Example
+                        {/* <div className="card cardey mb-4">
+                            <div className="card-header">
+                                    <i className="fa fa-table me-1"></i>
+                                    DataTable Example
                             </div>
                             <div className="card-body">
-                                
-                            {/* <div className="card-header">
-                                <i className="fa fa-table me-1"></i>
-                                DataTable Example
+                                <Tbadmin data={data}/>
                             </div>
-                            <div className="card-body">
-                            <table id="example" className="table table-striped" style={{width:'100%'}}>
-                            <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Name of Couneslor</th>
-                                        <th>Gender</th>
-                                        <th>Date</th>
-                                        <th>Place Of Couneslling</th>
-                                        <th>Problem</th>
-                                        <th>Status</th>
-                                        
-                                        <th>Age</th>
-                                        <th>finacial_status</th>
-                                        <th>marital_status</th>
-                                        <th>school</th>
-                                        <th>religion</th>
-                                        <th>fathers_occupation</th>
-                                        <th>mothers_occupation</th>
-                                        <th>fathers_education</th>
-                                        <th>mothers_education</th>
-                                        <th>history_of_problem</th>
-                                        <th>intervention</th>
-                                        <th>challenges_by_counsellor</th>
-                                        <th>number_of_followup_sections</th>
-                                        <th>referral_service</th>
-                                        <th>outcome</th>
-                                        <th>remarks</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                {data?.map(record => 
-                                        <tr key={record.id}>
-                                        
-                                        <td>{record.age}</td>
-                                        <td>{record.finacial_status}</td>
-                                        <td>{record.marital_status}</td>
-                                        <td>{record.school}</td>
-                                        <td>{record.religion}</td>
-                                        <td>{record.fathers_occupation}</td>
-                                        <td>{record.mothers_occupation}</td>
-                                        <td>{record.fathers_education}</td>
-                                        <td>{record.mothers_education}</td>
-                                        <td>{record.history_of_problem}</td>
-                                        <td>{record.intervention}</td>
-                                        <td>{record.challenges_by_counsellor}</td>
-                                        <td>{record.number_of_followup_sections}</td>
-                                        <td>{record.referral_service}</td>
-                                        <td>{record.outcome}</td>
-                                        <td>{record.remarks}</td>
-                                        <td>
-                                        <div className='button-group'>
-                                        <button className='btn btn-danger' onClick={()=>{delrecord(record.id)}}>Delete</button>
-                                        <button className='btn btn-warning ms-2' style={{color:'white'}} onClick={()=>{handleShow();searchemail(record.email);getformdetails(record.id);}}>View</button>
-                                        </div>
-                                        </td>
-                                        </tr>
-                                        )}
-                                    
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                    <th>Name</th>
-                                        <th>Name of Couneslor</th>
-                                        <th>Gender</th>
-                                        <th>Date</th>
-                                        <th>Place Of Couneslling</th>
-                                        <th>Problem</th>
-                                        <th>Status</th>
-                                        
-                                        <th>Age</th>
-                                        <th>finacial_status</th>
-                                        <th>marital_status</th>
-                                        <th>school</th>
-                                        <th>religion</th>
-                                        <th>fathers_occupation</th>
-                                        <th>mothers_occupation</th>
-                                        <th>fathers_education</th>
-                                        <th>mothers_education</th>
-                                        <th>history_of_problem</th>
-                                        <th>intervention</th>
-                                        <th>challenges_by_counsellor</th>
-                                        <th>number_of_followup_sections</th>
-                                        <th>referral_service</th>
-                                        <th>outcome</th>
-                                        <th>remarks</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
-                           </table>
-                        
-                           </div> */}
-                           <Tbadmin data={data}/>
-                           </div>
-                           {/* {console.log(screen.height)} */}
-                        </div>
+                        </div> */}
                         
         </>
     )

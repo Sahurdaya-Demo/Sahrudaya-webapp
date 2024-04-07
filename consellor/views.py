@@ -39,11 +39,14 @@ class emailchange(APIView):
      def post(self, request, format=None):
           email=counsellor.objects.get(id=request.data['id'])
           name=employee.objects.get(email=request.data['email'])
-          session=ptsessions.objects.get(uniqueid=request.data['uid'])
-          session.email=request.data['email']
+          session=ptsessions.objects.filter(uniqueid=request.data['uid'])
+          for item in session:
+               item.email=request.data['email']
+               item.nameofcounsellor=name.name
+               item.save()
           email.email=request.data['email']
           email.nameofcounsellor=name.name
-          session.nameofcounsellor=name.name
+          
           email.save()
-          session.save()
+          
           return Response({"message": "Record deleted successfully"},status=status.HTTP_200_OK)

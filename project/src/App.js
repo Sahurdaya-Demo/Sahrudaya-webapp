@@ -19,6 +19,7 @@ import ValidLink from './components/Utils/ValidLink';
 import Register from './components/Utils/register/register';
 import Registervalid from './components/Utils/Registervalid';
 import Patients from './components/counsellor/Patients';
+import Codata from './components/admin/Codata';
 // import { createBrowserHistory } from 'history';
 // import { useEffect } from 'react';
 // import usePageViews from './usePageView';
@@ -72,6 +73,7 @@ function App() {
           <Route path='admin' element={<Adminloading/>}>
             <Route path='' element={<Admindash/>}/>
             <Route path='emp' element={<Employee/>}/>
+            <Route path='tb' element={<Codata/>}/>
           </Route>
           <Route path='counsellor' element={<Counsellorloading/>}>
             <Route path='' element={<Counseldash/>}/>

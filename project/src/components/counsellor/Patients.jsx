@@ -52,6 +52,7 @@ function Patients()
              url: `${LinkApi}crudsession/`,
             }).then(response=>{
                 alert('Session Data Stored')
+                window.location.reload();
             })
            }
          catch{

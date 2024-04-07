@@ -6,10 +6,10 @@ import Modal from 'react-bootstrap/Modal'
 import LoadExternalScript from '../../LoadExternalScript';
 import axios from 'axios';
 import { UnloadExternalScript } from '../../UnloadExternalScript';
-import view from './Data';
 import { LinkApi } from '../Utils/Resource';
 function Counsellor() {
   let profilejson=[]
+  let interval;
     const navigate=useNavigate();
     const location = useLocation();
     const [show, setShow] = useState(false);
@@ -26,24 +26,58 @@ function Counsellor() {
     const[profile,setprofile]=useState([])
     const [password,setpassword]=useState('')
     const [crpassword,setcrpassword]=useState('')
+    const [showdisable, setShowdisable] = useState(false);
+    const handleClosedisable = () => setShowdisable(false);
+    const handleShowdisable = () => setShowdisable(true);
     
   useEffect(()=>{
     let token;
     token=sessionStorage.getItem('token')
-    // console.log(location.state.token)
     if(token===null)
     navigate('/',{ replace: true })
     else{
-        view(setprofile)
+      view()
+       interval=setInterval(() => {
+        view()
+        // console.log('hello')
+      }, 5000);
+        
         sessionStorage.setItem('type','counselor')
     }
     return () => {
     
       UnloadExternalScript(['https://code.jquery.com/jquery-3.7.0.js','https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js','https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js','https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js','https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js','https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js']);
-     
+      clearInterval(interval)
+      handleClosedisable();
     };
-    // return()=>{console.log('refresh')}
   },[])
+  const view=async()=>{
+    try{
+      // console.log(sessionStorage.getItem('token'));
+    await axios({
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${JSON.parse(sessionStorage.getItem('token'))}`, // Include the access token in the Authorization header
+      },
+      // url:'http://127.0.0.1:8000/profile/',
+      url:`${LinkApi}profile/`,
+    }).then(response=>{
+        // console.log(response.data)
+        sessionStorage.setItem('name',response.data[0][0].name)
+        sessionStorage.setItem('email',response.data[0][0].email)
+        setprofile(response.data) 
+    })
+  }
+  catch{
+    handleShowdisable();
+    setTimeout(() => {
+      Logout()
+    }, 3000);
+    
+  }
+
+  }
   const changepassword=async()=>{
     if(password===crpassword){
     let formField = new FormData()
@@ -100,7 +134,7 @@ const handlesaveClick = () => {
     setDisableButton(!disableButton)
 };
 
-  const Logout=async()=>{
+  const Logout=()=>{
     // await axios({
     //   method: 'post',
     //   // headers: {
@@ -140,7 +174,7 @@ const handlesaveClick = () => {
                                 <div className="navbar-brand ps-1">
                                 <Link to="" className="nav-link" >
                                 Counsellor Dashboard
-                            </Link>
+                                </Link>
                                 </div>
                                 
             <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" onClick={handletoggle} href="#!"><i className="fa fa-bars"></i></button>
@@ -359,6 +393,12 @@ const handlesaveClick = () => {
           Save
           </Button>
         </Modal.Footer>
+      </Modal>
+      <Modal show={showdisable} onHide={handleClosedisable}>
+        <Modal.Header closeButton>
+          <Modal.Title>Alert</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>You Have Been Logged Out By Admin</Modal.Body>
       </Modal>
       </>
   )
