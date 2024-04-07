@@ -81,7 +81,7 @@ function App() {
             <Route path='Patients' element={<Patients/>}/>
           </Route>
           <Route path='*' element={<Error/>}/>
-          <Route path="user/reset/:id/:token/:secure" element={<ValidLink/>} />
+          <Route path="reset/:id/:token/:secure" element={<ValidLink/>} />
           <Route path="registration/:secure" element={<Registervalid/>} />
           </Routes>
 

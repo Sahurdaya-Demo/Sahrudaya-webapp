@@ -37,8 +37,10 @@ function Userpassreset({id,token,secure}){
     }).then(response=>{
         setcrpassword('')
         setpassword('')
-       if(response.data)
+       if(response.data){
        alert('Password Changed Successfully!! Return To Login Page')
+       window.close();
+       }
        else
         alert(`Password and Confirm Password Doesn't match`)
       })

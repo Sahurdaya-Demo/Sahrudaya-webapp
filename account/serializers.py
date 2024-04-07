@@ -70,7 +70,7 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
       token = PasswordResetTokenGenerator().make_token(user)
       print('Password Reset Token', token)
       secure_str = ''.join((secrets.choice(string.ascii_letters) for i in range(20)))
-      link = 'https://sahrudaya-webapp.vercel.app/user/reset/'+uid+'/'+token+'/'+secure_str
+      link = 'https://sahrudaya-webapp.vercel.app/reset/'+uid+'/'+token+'/'+secure_str
       print('Password Reset Link', link)
       # Send EMail
       body = 'Click Following Link to Reset Your Password '+link
