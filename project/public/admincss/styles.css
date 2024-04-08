@@ -11384,7 +11384,7 @@ tfoot tr {
 }
 .cardey{
   background-color: #fff;
-  border-color: #000;
+  /* border-color: #000; */
   color: #000;
   box-shadow: 6px 6px  2px rgba(52, 52, 52, 0.1) ;
   transition: all 0.5s ease-out;

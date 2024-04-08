@@ -261,7 +261,7 @@ const DataTableComponent = ({ data=[] }) => {
         <>
         {/* <link rel='stylesheet'type='text/css' href='https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-2.0.2/b-3.0.1/b-html5-3.0.1/b-print-3.0.1/datatables.min.css'></link> */}
       <div>
-        <table ref={tableRef} className="table table-striped display responsive" width="100%" id='counsel'>
+        <table ref={tableRef} className="table table-striped display responsive ptdetails" width="100%" id='counsel'>
           <thead>
           <tr>
                     <th></th>

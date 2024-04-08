@@ -228,7 +228,7 @@ const handlesaveClick = () => {
                                 Patients
                             </Link>
                             {/*  */}
-                            <div className="sb-sidenav-menu-heading">Addons</div>
+                            {/* <div className="sb-sidenav-menu-heading">Addons</div>
                             <a className="nav-link" href="charts.html">
                                 <div className="sb-nav-link-icon"><i className="fa fa-chart-area"></i></div>
                                 Charts
@@ -236,7 +236,7 @@ const handlesaveClick = () => {
                             <a className="nav-link" href="tables.html">
                                 <div className="sb-nav-link-icon"><i className="fa fa-table"></i></div>
                                 Tables
-                            </a>
+                            </a> */}
                         </div>
                     </div>
                     <div className="sb-sidenav-footer">

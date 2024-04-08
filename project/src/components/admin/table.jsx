@@ -65,7 +65,7 @@ const Tbadmin=({data=[]})=>{
         data,
         columns: [
           { title: 'UID', data: 'uniqueid',className:'text-start all'},
-          { title: 'Name', data: 'name',className:'mt-4 all' },
+          { title: 'Name', data: 'name',className:'all' },
           { title: 'Name Of Counselor', data: 'nameofcounsellor',className:'all' },
           { title: 'Gender', data: 'gender',className:'all' },
           { title: 'Date', data: 'date' ,className:'text-start all'},
