@@ -120,7 +120,8 @@ return (
 		<div className="container-login100">
 			<div className="card wrap-login100" style={{height:'650px'}}>
 	         <div className="login100-pic position-relative">
-	        	<img  src={portr} alt='logo' style={{maxHeight:'60%',maxWidth:'60%',marginTop:'150px'}}/>
+	        	<img  src='../../../logo.jpg' alt='logo' style={{marginTop:'150px'}}/>
+				{/* <img  src={portr} alt='logo' /> */}
 			</div>
             <form className="login100-form validate-form" onSubmit={handleSubmit}>
 					<span className="login100-form-title">

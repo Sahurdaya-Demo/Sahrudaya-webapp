@@ -300,7 +300,7 @@ const handlesaveClick = () => {
           <Button variant="secondary" onClick={handleviewClose}>
             Close
           </Button>
-          <Button  className='btn-primary' onClick={changepassword} variant='primary'>
+          <Button  className='btn-success' onClick={changepassword} >
           {loading ?  <Spinner size='sm'/>:null}
             Submit
           </Button>

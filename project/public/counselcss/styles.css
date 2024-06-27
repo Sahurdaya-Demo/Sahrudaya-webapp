@@ -11379,6 +11379,17 @@ smi-navbar {
     display: block;
   }
 }
+@media only screen and (max-width: 576px) {
+  .area{
+    width:100%;
+  }
+}
+@media (min-width: 700px){
+  
+ .area{
+  width:50%;
+ }
+}
 @media (min-width: 700px){
   
   .navbar .dropdown ul{
@@ -11414,7 +11425,7 @@ smi-navbar {
 .area{
     /* background: #4e54c8;   */
     background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
-    width: 100%;
+    /* width: 50%; */
     height:100vh;
     
    

@@ -192,10 +192,10 @@ function Admin() {
                             </Link>
                         </div>
                     </div>
-                    <div className="sb-sidenav-footer">
+                    {/* <div className="sb-sidenav-footer">
                         <div className="small">Logged in as:</div>
                         Start Bootstrap
-                    </div>
+                    </div> */}
                 </nav>
             </div>
             <div id="layoutSidenav_content">

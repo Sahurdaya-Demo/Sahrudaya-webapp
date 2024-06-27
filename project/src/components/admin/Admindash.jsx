@@ -10,7 +10,7 @@ import { Bar, Line } from "react-chartjs-2";
 // import { Row,Col} from "react-bootstrap";
 import CountUp from 'react-countup';
 import { LinkApi } from '../Utils/Resource';
-import Tbadmin from './table';
+// import Tbadmin from './table';
 function Admindash()
 {
     // const windowWidth = useRef(window.innerWidth);
@@ -137,95 +137,7 @@ function Admindash()
             setoverall(overallCounts);
             
         };
-        // const table=async()=>{
-        //     // const response = await fetch('http://127.0.0.1:8000/formsubmit/');
-        //     const response = await fetch(`${LinkApi}formsubmit/`);
-        //     const jsontb = await response.json();
-        //     setData(jsontb)
-        // }
-    // useEffect(()=>{
-    //     LoadExternalScript(['https://code.jquery.com/jquery-3.7.0.js','https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js','https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js','https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js','https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js','https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js','https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js','adminjs/tablescript.js']);
-    //     new PureCounter();
-    //     retrieve()
-    //   },[])
-    //   const retrieve=async()=>{
-    //     const response= await fetch(`http://127.0.0.1:8000/formsubmit/`)
-    //     const jsonData = await response.json();
-    //     setdata(jsonData)
-    //     for(let i=0;i<12;i++){
-    //         males.push(jsonData.filter(record=>record.gender==='Male'&&new Date(record.date).getMonth()===i).length)
-    //         females.push(jsonData.filter(record=>record.gender==='Female'&&new Date(record.date).getMonth()===i).length)
-    //         others.push(jsonData.filter(record=>record.gender==='Others'&&new Date(record.date).getMonth()===i).length)
-        
-    //     }
-    //     for(let i=0;i<12;i++){
-    //         pending.push(jsonData.filter(record=>record.status==='Pending'&&new Date(record.date).getMonth()===i).length)
-    //         completed.push(jsonData.filter(record=>record.status==='Completed'&&new Date(record.date).getMonth()===i).length)
-    //         overall.push(jsonData.filter(record=>new Date(record.date).getMonth()===i).length)
-        
-    //     }
-    // }
-    
-    // const searchemail=async(email)=>{
-    //     await axios({
-    //         method: 'post',
-    //         // url: 'http://127.0.0.1:8000/emailsearch/',
-    //         url: `${LinkApi}emailsearch/`,
-    //         data: {'email':email}
-    //     }).then(response=>{
-    //         if(response.data.errors)
-    //         {
-    //             toggleShowA()
-    //             // console.log('not found')
-    //         }
-    //     })
-    // }
-    //   const getformdetails=async(id)=>{
-        
-    //     // const result=await axios.get(`http://127.0.0.1:8000/formsubmit/${id}`)
-    //     const result=await axios.get(`${LinkApi}formsubmit/${id}`)
-    //     // console.log(result.data)
-    //     setdate(result.data.date)
-    //     setid(result.data.id)
-    //     setname(result.data.name)
-    //     setage(result.data.age)
-    //     setgender(result.data.gender)
-    //     setfinstatus(result.data.finacial_status)
-    //     setmaritalstat(result.data.marital_status)
-    //     setschool(result.data.school)
-    //     setreligion(result.data.religion)
-    //     setfeducation(result.data.fathers_education)
-    //     setfoccupation(result.data.fathers_occupation)
-    //     setmeducation(result.data.mothers_education)
-    //     setmoccupation(result.data.mothers_occupation)
-    //     sethistory(result.data.history_of_problem)
-    //     setproblem(result.data.problem)
-    //     setintervention(result.data.intervention)
-    //     setchallenge(result.data.challenges_by_counsellor)
-    //     setsession(result.data.number_of_followup_sections)
-    //     setreferral(result.data.referral_service)
-    //     setoutcome(result.data.outcome)
-    //     setremarks(result.data.remarks)
-    //     setstatus(result.data.status);
-    //     setplace(result.data.place_of_counselling)
-    //     setnameofcon(result.data.nameofcounsellor)
-    // }
-//     const delrecord=async(id)=>{
-//     if (window.confirm('Are you sure you wish to delete this item?')){
-//     try{
-//     await axios({
-//         method: 'delete',
-//         // url:`http://127.0.0.1:8000/formsubmit/${id}/`,
-//         url:`${LinkApi}formsubmit/${id}/`,
-//       }).then(response=>{
-//         console.log(response.data);
-//         alert('Record Deleted Successfully!!')
-//       }
-//       )}
-//       catch{}
-//     }
-
-//   }
+       
   defaults.maintainAspectRatio=false;
   defaults.responsive=true;
 
